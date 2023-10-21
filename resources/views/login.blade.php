@@ -41,7 +41,7 @@
             <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
             <div class="card bg-glass">
                 <div class="card-body px-4 py-5 px-md-5">
-                    <form class="form" action="{{ url('gyms') }}">
+                    <form class="form" action="{{ url('dashboard') }}">
                         <div>
                             <h4 class="mb-3 text-center">LOGIN</h4>
                         </div>
