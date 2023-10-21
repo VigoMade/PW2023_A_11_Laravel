@@ -14,5 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('navbarAdmin');
+    return view('login');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+
+Route::get('/admin', function () {
+    return view('/Admin/indexPageAdmin');
+});
+
+Route::get('/loginAdmin', function () {
+    return view('/Admin/loginAdmin');
 });

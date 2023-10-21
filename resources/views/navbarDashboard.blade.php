@@ -19,13 +19,27 @@
             filter: brightness(0.6);
         }
 
+
+        .offcanvas {
+            background-color: #03213B;
+            /* Atur latar belakang dark offcanvas dengan warna yang sama */
+            color: white;
+            /* Atur warna teks offcanvas menjadi putih */
+        }
+
+        .offcanvas.navbar-scrolled {
+            background-color: #03213B;
+            /* Pastikan latar belakang tetap sama ketika navbar di-scroll */
+        }
+
+
         .navbar {
             background-color: transparent;
             transition: background-color 0.5s;
         }
 
         .navbar.navbar-scrolled {
-            background-color: black;
+            background-color: #03213B;
         }
 
         .navbar.navbar-scrolled .navbar-text {
@@ -36,7 +50,6 @@
 </head>
 
 <body>
-    <img class="bg-image" src="https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.2024084838.1691340112&semt=sph" alt="">
     <nav class="navbar navbar-dark fixed-top" id="custom-navbar">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
@@ -46,7 +59,7 @@
         </div>
     </nav>
 
-    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="background-color:#03213B;">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -57,20 +70,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                    <a class="nav-link" href="{{url('loginAdmin')}}">Admin Page</a>
                 </li>
             </ul>
             <form class="d-flex mt-3" role="search">
@@ -82,6 +82,10 @@
     </div>
     </nav>
 
+
+    <div class="content-wrapper">
+        @yield('content')
+    </div>
     <script>
         const navEl = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
