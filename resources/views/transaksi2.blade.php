@@ -344,9 +344,6 @@
                                     </p>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
@@ -357,8 +354,6 @@
     <div class="paddingForStickt">
 
     </div>
-
-
 
     <footer class="sticky-footer">
         <div class="container text-center">
@@ -399,7 +394,7 @@
 
             if (timeInSeconds < 0) {
                 //nanti bakal di route ke halaman sebelum pembayaran
-                // window.location.href = "{{ route('dashboard ') }}";
+
             }
         }
 
