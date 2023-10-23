@@ -98,3 +98,10 @@ membantunya mengungkap sosok misterius yang meneror kota.'
         ]
     ]);
 });
+
+
+Route::get('/transaksi1', function(){
+    return view('transaksi1');
+});
+
+
