@@ -11,7 +11,7 @@
 
     <style>
         body {
-            background-color: #014384;
+            background-color: #04192E;
         }
 
         .bg-image {
@@ -99,20 +99,38 @@
             align-items: center;
             text-align: center;
             border-radius: 10px;
-
-
             background-color: #06314C;
         }
 
         .filmBioskop {
-            align-items: center;
-            text-align: center;
+
+            background-color: #06314C;
             color: white;
+            border-radius: 30px;
+            height: auto;
+            margin-left: 10%;
         }
 
         .filmBioskop img {
             border-radius: 20px;
             margin-bottom: 20px;
+        }
+
+        .filmBioskop h4 {
+            padding-left: 5%;
+            padding-top: 25px;
+        }
+
+        .nomorOrder {
+            color: #A8A8A8;
+            padding-left: 0px 10px;
+            padding-top: 25px;
+        }
+
+        .detailTransaksi {
+            color: white;
+            padding-left: 0px 10px;
+            padding-top: 25px;
         }
 
         .cardBodyJamJadwal {
@@ -150,8 +168,35 @@
 
         }
 
+
         .paddingForStickt {
             margin: 100px 0px;
+        }
+
+        .sejajarkan {
+            display: flex;
+            justify-content: space-between;
+            height: 30px;
+        }
+
+        .promoVoucher {
+            margin-left: 0 10px;
+        }
+
+        .promoVoucher img {
+            margin-right: 20px;
+
+        }
+
+        .notedOrder {
+            color: rgb(237, 100, 100);
+            padding-left: 0px 10px;
+        }
+
+        .totalPembayaran {
+            padding: 0px 30%;
+            align-items: center;
+            text-align: center;
         }
     </style>
 </head>
@@ -165,7 +210,6 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="navbar-brand mx-auto ">
                 <p class="TitleNavbar" style="font-family:Marcellus SC; font-size:20px;"> CINEMA ATMA</p>
             </div>
@@ -211,33 +255,114 @@
     </div>
     </nav>
 
+    <main>
+        <ul class="list-unstyled">
+            <li>
+                <div class="row mt-5">
+                    <div class="col-lg-12">
+                        <div class="row containerBody">
+                            <div class="col-md-6 filmBioskop">
+                                <h4>Ringkasan Order</h4>
+                                <p class="nomorOrder" style="color: #A8A8A8">NOMOR ORDER : 1790128301283921839012</p>
 
+                                <hr>
+                                <div class="detailTransaksi">
+                                    <h5 class="mb-4">Detail Transaksi</h5>
 
-    <ul class="list-unstyled">
-        <li>
-            <div class="row mt-5">
-                <div class="col-lg-12">
-                    <div class="row containerBody">
-                        <div class="col-md-9 filmBioskop">
+                                    <div class="sejajarkan">
+                                        <p>TIKET</p>
+                                        <p>5x</p>
+                                    </div>
 
-                        </div>
-                        <div class="col-md-3">
-                            <div class="">
-                                <img src="imgTransaksi1/posterSherina2.jpg" alt="" width="250px">
-                                <h5>PETUALANGAN SHERINA 2</h5>
+                                    <div class="sejajarkan">
+                                        <p>KURSI REGULER</p>
+                                        <div style="display: flex">
+                                            <p class="mr-2">Rp.50000 </p>
+                                            <p style="color: #A8A8A8; padding-left: 5px;">x1</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="sejajarkan">
+                                        <p>Biaya Layanan</p>
+                                        <div style="display: flex">
+                                            <p class="mr-2">Rp.4000 </p>
+                                            <p style="color: #A8A8A8; padding-left: 5px;">x1</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="promoVoucher">
+                                    <h5 class="mb-4">Detail Transaksi</h5>
+                                    <div style="display: flex; align-items: center">
+                                        <img src="imgTransaksi2/logoDana.png" alt="" width="30px"
+                                            height="30px">
+
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias omnis
+                                            possimus soluta facilis facere non commodi pariatur optio. Cumque illum
+                                            obcaecati fugiat aliquid deserunt necessitatibus?</p>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="timePayment" style="padding-left: 0px 10px; height: 20px;">
+                                    <div style="display: flex">
+                                        <p>Selesaikan Pembayaran Anda Dalam</p>
+                                        <span id="countdown"
+                                            style="color: rgb(237, 100, 100); padding-left: 20px;"></span></p>
+
+                                    </div>
+                                </div>
+                                <hr>
+
+                                <div class="notedOrder">
+                                    <p style="margin-bottom: 0px">1. Pembayaran ticket tidak bisa dirubah / dibatalkan.
+                                    </p>
+                                    <p>2. Untuk Anak Usia 2 tahun keatas wajib membeli tiket</p>
+                                </div>
+                                <hr>
+
+                                <div class="totalPembayaran" style="margin-bottom: 20px">
+                                    <div style="display: flex; justify-content: space-between">
+                                        <p style="height: 20px; margin-top: 5px;">TOTAL BAYAR</p>
+                                        <h3>Rp 50000</h3>
+                                    </div>
+                                </div>
                             </div>
+
+                            {{-- sisi kanan --}}
+                            <div class="col-md-4" style="text-align: center">
+                                <div class="">
+                                    <img style="border-radius: 20px" src="imgTransaksi1/posterSherina2.jpg"
+                                        alt="" width="300px">
+                                    <h5 style="color: white; margin-top: 20px; ">PETUALANGAN SHERINA
+                                        2</h5>
+                                    <p style="color: white; margin-top: 30px;margin-bottom: 0px">AMBARRUKMO, STUDIO 5
+                                    </p>
+                                    <p class="" style="color: #A8A8A8">2900 km - PLAZA AMBARRUKMO LT.3, Jl.
+                                        ADI SUCIPTO
+                                    </p>
+                                </div>
+                            </div>
+
+
+
                         </div>
                     </div>
                 </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </main>
 
     <div class="paddingForStickt">
 
     </div>
+
+
+
     <footer class="sticky-footer">
         <div class="container text-center">
+
             <h4 class="mb-0">Beli Tiket</h4>
         </div>
     </footer>
@@ -247,7 +372,7 @@
     <script>
         const navEl = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY < 10) {
+            if (window.scrollY > 10) {
                 navEl.classList.add('navbar-scrolled');
             } else {
                 navEl.classList.remove('navbar-scrolled');
@@ -256,6 +381,29 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+
+    <script>
+        // set waktu 5 menit
+        let timeInSeconds = 6 * 50 + 0;
+
+        function updateCountdown() {
+            const minutes = Math.floor(timeInSeconds / 60);
+            const seconds = timeInSeconds % 60;
+            const formattedTime = `${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('countdown').textContent = formattedTime;
+
+            // Decrease
+            timeInSeconds--;
+
+
+            if (timeInSeconds < 0) {
+                //nanti bakal di route ke halaman sebelum pembayaran
+                // window.location.href = "{{ route('dashboard ') }}";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 
