@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('navbarAdmin');
+    return view('transaksi2');
 });
+
+
+Route::get('/transaksi1', function(){
+    return view('transaksi1');
+});
+
+
