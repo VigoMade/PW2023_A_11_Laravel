@@ -70,7 +70,7 @@
                             @foreach($chunk as $film)
                             <div class="col-md-4 mb-3">
                                 <div class="card" style="width: 288px; height:424px;">
-                                    <a href="#">
+                                    <a href="{{url('transaksi1')}}">
                                         <div style="width: 288px; height:424px;">
                                             <img class="img-fluid" style="width: 100%; height: 100%;" alt="290x426" src="{{ $film['gambar'] }}" />
                                         </div>

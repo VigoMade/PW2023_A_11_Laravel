@@ -100,8 +100,10 @@ membantunya mengungkap sosok misterius yang meneror kota.'
 });
 
 
-Route::get('/transaksi1', function(){
+Route::get('/transaksi1', function () {
     return view('transaksi1');
 });
 
-
+Route::get('/transaksi2', function () {
+    return view('transaksi2');
+});
