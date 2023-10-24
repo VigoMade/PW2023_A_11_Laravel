@@ -13,6 +13,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
 |
 */
 
+Route::get('/seatBioskop', function () {
+    return view('seatBioskop');
+});
+
 Route::get('/', function () {
     return view('login');
 });
@@ -386,8 +390,3 @@ Route::get('/daftar', function () {
 
     return view('Admin.daftarFilm', ['isi' => $paginator]);
 })->name('daftar');
-
-Route::get('/seatBioskop', function(){
-    return view('seatBioskop');
-});
-
