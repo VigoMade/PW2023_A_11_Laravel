@@ -1,7 +1,13 @@
 @extends('navbarDashboard')
 
 @section('content')
-
+<?php
+$images = [
+    "img/banner1.jpg",
+    "img/banner2.jpg",
+    "img/banner3.jpg"
+]
+?>
 <style>
     body {
 
@@ -106,15 +112,12 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://cinepolis.co.id/images/temp/banner_jomo_02.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="https://cinepolis.co.id/images/temp/banner_luxe_02.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="https://cinepolis.co.id/images/temp/banner_luxe_02.jpg" class="d-block w-100" alt="...">
-        </div>
+        <?php foreach ($images as $i => $gbr) {
+        ?>
+            <div class="carousel-item <?php echo $i === 0 ? "active" : ""; ?>">
+                <img src="<?php echo $gbr; ?>" class="d-block w-100" role="img" aria-label="Gambar ke-<?php echo ($i + 1); ?>" focusable="false" />
+            </div>
+        <?php } ?>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
