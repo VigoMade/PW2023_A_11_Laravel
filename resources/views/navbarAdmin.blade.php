@@ -51,20 +51,20 @@
             </button>
 
             <div class="btn-group">
-                <button id="dropdown-button" type="button" class="btn" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" style="background-color: transparent; color: white;">
+                <button id="dropdown-button" type="button" class="btn" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" style="background-color: #03213B; color: white;">
                     <img src="{{asset('img/avatar2.png')}}" alt="Avatar" class="rounded-circle" style="width: 32px; height: 32px;"> Admin <i class="fas fa-caret-down"></i>
                 </button>
 
-                <ul class=" dropdown-menu dropdown-menu-lg-end">
-                    <li><a class="dropdown-item" href="{{url('login')}}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <ul class=" dropdown-menu dropdown-menu-lg-end" style="background-color: #03213B;">
+                    <li><a class=" dropdown-item" href="{{url('loginAdmin')}}" style="color: white;" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="background-color:#03213B !important;">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Admin</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -73,20 +73,10 @@
                     <a class="nav-link active" aria-current="page" href="{{url('admin')}}">Admin Page</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="{{url('daftar')}}">Daftar Film</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('userControl')}}">User Control</a>
                 </li>
             </ul>
             <form class="d-flex mt-3" role="search">
@@ -101,6 +91,24 @@
     <div class="content-wrapper">
         @yield('content')
     </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header custom-header" style="background-color: #0069d9">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color:white;">Apakah Ingin Logout?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{{url ('loginAdmin')}}" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <script>
         const navEl = document.querySelector('.navbar');
         const dropdownButton = document.getElementById('dropdown-button');
@@ -108,10 +116,10 @@
         window.addEventListener('scroll', () => {
             if (window.scrollY > 10) {
                 navEl.classList.add('navbar-scrolled');
-                dropdownButton.style.backgroundColor = 'black'; // Atur latar belakang tombol ke hitam
+                dropdownButton.style.backgroundColor = '#03213B';
             } else {
                 navEl.classList.remove('navbar-scrolled');
-                dropdownButton.style.backgroundColor = 'transparent'; // Atur latar belakang tombol kembali menjadi transparan
+                dropdownButton.style.backgroundColor = 'transparent';
             }
         });
     </script>
