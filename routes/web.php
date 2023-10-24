@@ -224,6 +224,7 @@ Route::get('/transaksi2', function () {
     return view('transaksi2');
 });
 
+
 Route::get('/form', function () {
     return view('Admin/formDaftarFilm');
 });
@@ -385,3 +386,8 @@ Route::get('/daftar', function () {
 
     return view('Admin.daftarFilm', ['isi' => $paginator]);
 })->name('daftar');
+
+Route::get('/seatBioskop', function(){
+    return view('seatBioskop');
+});
+
