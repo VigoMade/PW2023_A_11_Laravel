@@ -107,3 +107,7 @@ Route::get('/transaksi1', function () {
 Route::get('/transaksi2', function () {
     return view('transaksi2');
 });
+
+Route::get('/seatBioskop', function(){
+    return view('seatBioskop');
+});
