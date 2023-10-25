@@ -15,10 +15,10 @@
             background-color: #03213B;
             color: #fff;
             /* display: flex;
-                                                                                                                        flex-direction: column;
-                                                                                                                        align-items: center;
-                                                                                                                        justify-content: center; */
-            height: 100vh;
+                                                                                                                                                flex-direction: column;
+                                                                                                                                                align-items: center;
+                                                                                                                                                justify-content: center; */
+            height: auto;
         }
 
         .main-content {
@@ -32,12 +32,7 @@
             /* Tinggi footer */
         }
 
-        .footer {
-            background-color: red;
-            height: 50px;
-            /* Tinggi footer */
-            width: 100%;
-        }
+
 
 
 

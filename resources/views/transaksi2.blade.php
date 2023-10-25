@@ -302,7 +302,7 @@
 
         </main>
 
-        <div class="paddingForStickt">
+        <div class="paddingForStickt mt-5">
 
             <a href="{{ url('transaksi2') }}" class="btn btn-custom" style="text-decoration:none;">
                 <h4 class="mb-0">Beli Tiket</h4>
@@ -310,31 +310,34 @@
             <a href="{{ url('dashboard') }}" class="btn btn-custom2" style="text-decoration:none;">
                 <h4 class="mb-0">Cancel</h4>
             </a>
-
         </div>
 
-        <script src="{{ asset('js/transaksi1.js') }}"></script>
 
-        <script>
-            // set waktu 5 menit
-            let timeInSeconds = 6 * 50 + 0;
 
-            function updateCountdown() {
-                const minutes = Math.floor(timeInSeconds / 60);
-                const seconds = timeInSeconds % 60;
-                const formattedTime = `${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
-                document.getElementById('countdown').textContent = formattedTime;
 
-                // Decrease
-                timeInSeconds--;
-
-                if (timeInSeconds < 0) {
-                    //nanti bakal di route ke halaman sebelum pembayaran
-                    window.location.href = "{{ url('dashboard') }}";
-                }
-            }
-
-            setInterval(updateCountdown, 1000);
-        </script>
     </body>
+
+    <script src="{{ asset('js/transaksi1.js') }}"></script>
+
+    <script>
+        // set waktu 5 menit
+        let timeInSeconds = 6 * 50 + 0;
+
+        function updateCountdown() {
+            const minutes = Math.floor(timeInSeconds / 60);
+            const seconds = timeInSeconds % 60;
+            const formattedTime = `${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('countdown').textContent = formattedTime;
+
+            // Decrease
+            timeInSeconds--;
+
+            if (timeInSeconds < 0) {
+                //nanti bakal di route ke halaman sebelum pembayaran
+                window.location.href = "{{ url('dashboard') }}";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
 @endsection
