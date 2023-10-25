@@ -129,9 +129,7 @@
 
         }
 
-        .paddingForStickt {
-            margin: 100px 0px;
-        }
+
 
         .sejajarkan {
             display: flex;
@@ -187,10 +185,74 @@
             color: #CC9F00;
         }
 
+        .paddingForStickt {
+            width: 100%;
+        }
+
         @media (max-width: 768px) {
 
             .col-md-6.filmBioskop {
                 order: 2;
+                max-width: 650px;
+            }
+
+            .col-md-4 {
+                order: 1;
+
+                text-align: center;
+
+            }
+        }
+
+
+
+        @media (max-width: 550px) {
+
+            .col-md-6.filmBioskop {
+                order: 2;
+                max-width: 450px;
+
+            }
+
+            .totalPembayaran {
+                padding: 0px 15%;
+                align-items: center;
+                text-align: center;
+            }
+
+            .col-md-4 {
+                order: 1;
+
+                text-align: center;
+
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .col-md-6.filmBioskop {
+                order: 2;
+                max-width: 320px;
+
+            }
+
+            .timePayment {
+                font-size: 12px;
+            }
+
+            .col-md-4 {
+                order: 1;
+
+                text-align: center;
+
+            }
+        }
+
+        @media (max-width: 300px) {
+
+            .col-md-6.filmBioskop {
+                order: 2;
+                max-width: 250px;
 
             }
 
@@ -299,20 +361,17 @@
                 </li>
             </ul>
 
-
         </main>
 
-        <div class="paddingForStickt mt-5">
+        <div class="paddingForStickt">
 
             <a href="{{ url('transaksi2') }}" class="btn btn-custom" style="text-decoration:none;">
-                <h4 class="mb-0">Beli Tiket</h4>
+                <h4 class="mb-0">PAYMENT</h4>
             </a>
             <a href="{{ url('dashboard') }}" class="btn btn-custom2" style="text-decoration:none;">
                 <h4 class="mb-0">Cancel</h4>
             </a>
         </div>
-
-
 
 
     </body>
