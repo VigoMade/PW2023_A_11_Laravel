@@ -107,3 +107,9 @@ Route::get('/transaksi1', function () {
 Route::get('/transaksi2', function () {
     return view('transaksi2');
 });
+Route::get('/registrasi', function () {
+    return view('registrasi');
+});
+Route::get('/profile', function () {
+    return view('Costumer/profile');
+});

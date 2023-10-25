@@ -59,7 +59,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand mx-auto" href="#" style="font-family:Marcellus SC; font-size:50px;">CINEMA ATMA</a>
+            <a class="navbar-brand mx-auto" href="#" style="font-family:Marcellus SC; font-size:50px;">REGISTRASI</a>
         </div>
     </nav>
 
@@ -76,9 +76,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('loginAdmin')}}">Admin Page</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('profile')}}">Profile</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -90,7 +87,7 @@
         @yield('content')
     </div>
 
-    <footer class="bg-light text-center text-lg-start sticky-bottom">
+    <footer class="bg-light text-center text-lg-start fixed-bottom">
         <div class="text-center p-3" style="background-color: #03213B; color:white; font-family:Marcellus SC;">
             Kelompok 11 © 2023 Copyright:
             <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
