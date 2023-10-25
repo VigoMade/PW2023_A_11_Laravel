@@ -186,6 +186,21 @@
             background-color: black;
             color: #CC9F00;
         }
+
+        @media (max-width: 768px) {
+
+            .col-md-6.filmBioskop {
+                order: 2;
+
+            }
+
+            .col-md-4 {
+                order: 1;
+
+                text-align: center;
+
+            }
+        }
     </style>
 
     <body>
