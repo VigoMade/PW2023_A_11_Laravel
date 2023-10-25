@@ -227,14 +227,14 @@ Route::get('/transaksi1', function () {
 Route::get('/transaksi2', function () {
     return view('transaksi2');
 });
-<<<<<<< HEAD
+
 Route::get('/registrasi', function () {
     return view('registrasi');
 });
 Route::get('/profile', function () {
     return view('Costumer/profile');
 });
-=======
+
 
 
 Route::get('/form', function () {
@@ -398,4 +398,3 @@ Route::get('/daftar', function () {
 
     return view('Admin.daftarFilm', ['isi' => $paginator]);
 })->name('daftar');
->>>>>>> 619d33830eaf9b8baf7fb00b6f0e4737d1770195

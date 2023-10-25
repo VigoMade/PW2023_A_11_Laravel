@@ -20,9 +20,9 @@
         border: 1px solid #04192E;
 
     }
-    
-    .kertas{
-        background-color:#06314C;
+
+    .kertas {
+        background-color: #06314C;
         border-radius: 10px;
     }
 
@@ -55,12 +55,10 @@
             </div>
 
 
-
-
         </div>
         <div class="col-lg-6 col-lg-6 mt-2 ">
             <div class="container-fluid mt-1 mb-5 kertas">
-                <form action="">
+                <form action="{{url('login')}}" class="submit">
                     <div class="row mt-1">
                         <div class="col-fluid-12">
                             <label for="nama">Nama</label>
@@ -69,8 +67,7 @@
 
                     <div class="row mt-1">
                         <div class="col-fluid-12">
-                            <input type="text" class="form-control custom-input" id="nama" placeholder="isi Nama anda"
-                                name="nama">
+                            <input type="text" class="form-control custom-input" id="nama" placeholder="isi Nama anda" name="nama" required>
                         </div>
                     </div>
 
@@ -82,8 +79,7 @@
 
                     <div class="row mt-1">
                         <div class="col-fluid-12">
-                            <input type="text" class="form-control custom-input" id="username"
-                                placeholder="isi Username" name="username">
+                            <input type="text" class="form-control custom-input" id="username" placeholder="isi Username" name="username" required>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -95,15 +91,13 @@
                     <div class="row mt-1">
                         <div class="col-2">
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" id="laki" name="optradio"
-                                    value="Laki-laki">Laki-laki
+                                <input type="radio" class="form-check-input" id="laki" name="optradio" value="Laki-laki">Laki-laki
                                 <label class="form-check-label" for="laki"></label>
                             </div>
                         </div>
                         <div class="col-1">
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" id="perempuan" name="optradio"
-                                    value="Perempuan">Perempuan
+                                <input type="radio" class="form-check-input" id="perempuan" name="optradio" value="Perempuan">Perempuan
                                 <label class="form-check-label" for="perempuan"></label>
                             </div>
                         </div>
@@ -117,8 +111,7 @@
 
                     <div class="row mt-1">
                         <div class="col-fluid-12">
-                            <input type="date" class="form-control custom-input" id="date" placeholder="Tanggal Lahir"
-                                name="lahir">
+                            <input type="date" class="form-control custom-input" id="date" placeholder="Tanggal Lahir" name="lahir" required>
                         </div>
                     </div>
 
@@ -129,8 +122,7 @@
                     </div>
                     <div class="row mt-1">
                         <div class="col-fluid-12">
-                            <input type="text" class="form-control custom-input" id="email" placeholder="Isi Email"
-                                name="email" required>
+                            <input type="text" class="form-control custom-input" id="email" placeholder="Isi Email" name="email" required>
                         </div>
                     </div>
                     <div class="row mt-1">
@@ -140,8 +132,7 @@
                     </div>
                     <div class="row mt-1">
                         <div class="col-fluid-12">
-                            <input type="password" class="form-control custom-input" id="password"
-                                placeholder="isi Password" name="password" required>
+                            <input type="password" class="form-control custom-input" id="password" placeholder="isi Password" name="password" required>
                         </div>
                     </div>
                     <div class="row mt-1">
@@ -152,13 +143,12 @@
 
                     <div class="row mt-1">
                         <div class="col-fluid-12">
-                            <input type="text" class="form-control custom-input" id="telepon"
-                                placeholder="isi No Handphone" name="telepon" required>
+                            <input type="text" class="form-control custom-input" id="telepon" placeholder="isi No Handphone" name="telepon" required>
                         </div>
                     </div>
                     <div class="row-fluid mt-3 mb-5">
                         <div class="col d-flex justify-content-center align-items-center ">
-                            <button type="button" class="btn btn-warning register mb-5 mt-3">Register</button>
+                            <button type="submit" class="btn btn-warning register mb-5 mt-3">Register</button>
                         </div>
                     </div>
                 </form>

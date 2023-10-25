@@ -11,7 +11,7 @@
     <script type="text/javascript" src=""></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
+
     <style>
         .bg-image {
             width: 100vw;
@@ -59,19 +59,19 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand mx-auto" href="#" style="font-family:Marcellus SC; font-size:50px;">REGISTRASI</a>
+            <a class="navbar-brand mx-auto" href="#" style="font-family:Marcellus SC; font-size:50px;">Cinema Atma</a>
         </div>
     </nav>
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel" style="background-color:#03213B;">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Ur Page</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{url('dashboard')}}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{url('login')}}">login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('loginAdmin')}}">Admin Page</a>
@@ -90,7 +90,7 @@
     <footer class="bg-light text-center text-lg-start fixed-bottom">
         <div class="text-center p-3" style="background-color: #03213B; color:white; font-family:Marcellus SC;">
             Kelompok 11 © 2023 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            <a class="text-white" href="https://github.com/VigoMade/UTSWeb_A_11.git">UTS Web A Kelompok 11</a>
         </div>
     </footer>
 
