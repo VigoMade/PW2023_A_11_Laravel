@@ -8,6 +8,11 @@
 
     .container {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 80px;
+        margin-left: 20px;
     }
 
     .box-icon {
@@ -21,8 +26,26 @@
     }
 
     .text-sebelah-icon {
+        margin-right: 85%;
         margin-top: 10px;
         margin-left: 10px;
+    }
+
+    .borderTable {
+        border: 3px solid #06314C;
+        width: 100%;
+        background-color: #06314C;
+        border-radius: 20px;
+        margin-left: 20px;
+        margin-top: 10px;
+        overflow: auto;
+    }
+
+    .isiTable {
+        width: 100%;
+        margin-top: 25px !important;
+        margin-left: 20px !important;
+        overflow: auto;
     }
 
     .pagination-prev,
@@ -55,38 +78,46 @@
         background-color: #014384;
     }
 
-    .borderTable {
-        border: 3px solid #06314C;
-        width: 125%;
-        height: auto;
-        background-color: #06314C;
-        border-radius: 20px;
-        margin-left: 50px;
-        overflow: auto;
-    }
-
-    .isiTable {
-        width: 100%;
-        height: auto;
-        margin-top: 25px !important;
-        margin-left: 40px !important;
-        overflow: auto;
+    .edit-delete-column {
+        width: 150px;
     }
 
     .tombol {
         position: absolute;
         top: 83px;
         right: 20px;
-        width: 10%;
+        width: 105%;
+        max-width: 120px;
         background: #CEA945;
         border-radius: 20px;
         padding: 0px;
         color: white;
         font-size: 15px;
+        margin-left: 20px;
+        margin-bottom: 10px;
     }
 
-    .edit-delete-column {
-        width: 150px;
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+
+        .box-icon {
+            margin-bottom: 20px;
+        }
+
+        .pagination-prev,
+        .pagination-next {
+            font-size: 16px;
+        }
+
+        .tombol {
+            top: 83px;
+            right: 20px;
+            width: 100%;
+            max-width: none;
+            margin-left: 0;
+        }
     }
 </style>
 <div class="container" style="margin-top: 80px; margin-left:20px;">

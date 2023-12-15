@@ -28,10 +28,10 @@
     .kotak {
         background-color: #06314C;
         color: white;
-        border: 3px solid black;
+        border: 3px solid transparent;
         width: 75%;
         margin-top: 10px;
-        margin-left: 120px;
+        margin-left: 190px;
         display: flex;
         flex-direction: column;
         padding: 20px;
@@ -113,85 +113,6 @@
     <div class="text-sebelah-icon">
         <h4>Form Film</h4>
     </div>
-</div>
-
-<div class="kotak">
-    <form action="{{url('daftar')}}" class="submit">
-
-
-        <div class="form-group">
-            <label for="namafilm">Nama Film</label>
-            <input type="text" name="namafilm" id="namafilm" size="30" placeholder="Masukan Nama Film" required>
-        </div>
-        <div>
-            <label><strong>Genre</strong></label>
-            <input style="margin-left:5px;" type="checkbox" name="action" id="action" value="action">
-            <label for="action" style="margin-left:5px;">Action</label>
-            <input style="margin-left:20px;" type="checkbox" name="SliceOfLife" id="SliceOfLife" value="SliceOfLife">
-            <label for="SliceOfLife" style="margin-left:5px;">Slice Of Life</label>
-            <input style="margin-left:20px;" type="checkbox" name="Sci-fi" id="Sci-fi" value="Sci-fi">
-            <label for="Sci-fi" style="margin-left:5px;">Sci-fi</label>
-            <input style="margin-left:20px;" type="checkbox" name="Horror" id="Horror" value="Horror">
-            <label for="Horror" style="margin-left:5px;">Horror</label>
-            <input style="margin-left:20px;" type="checkbox" name="Romance" id="Romance" value="Romance">
-            <label for="Romance" style="margin-left:5px;">Romance</label>
-        </div>
-        <div class="form-group">
-            <label for="poster">Gambar Poster</label>
-            <div class="icon-input-container">
-                <iconify-icon icon="mdi:images-outline" width="30"></iconify-icon>
-                <input type="file" id="poster" name="poster" size="30" />
-            </div>
-        </div>
-
-        <div class="time-container">
-            <label><strong>Jam Tayang</strong></label>
-            <div class="time-input-container">
-                <iconify-icon icon="ph:clock" width="30"></iconify-icon>
-                <input type="time" name="jamTayang" id="jamTayang" class="custom-file-upload" required>
-            </div>
-
-            <label><strong>Tanggal Tayang</strong></label>
-            <div class="time-input-container">
-                <iconify-icon icon="uiw:date" width="30"></iconify-icon>
-                <input type="date" name="tanggalTayang" id="tanggalTayang" class="custom-file-upload" required>
-            </div>
-        </div>
-        <div class="time-container">
-            <label><strong>Jam Akhir</strong></label>
-            <div class="time-input-container">
-                <iconify-icon icon="ph:clock" width="30"></iconify-icon>
-                <input type="time" name="jamAkhir" id="jamAkhir" class="custom-file-upload" required>
-            </div>
-
-            <label><strong>Tanggal Akhir</strong></label>
-            <div class="time-input-container">
-                <iconify-icon icon="uiw:date" width="30"></iconify-icon>
-                <input type="date" name="tanggalAkhir" id="tanggalAkhir" class="custom-file-upload" required>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="harga">Harga</label>
-            <input type="text" name="harga" id="harga" size="30" placeholder="Masukan Harga" required>
-        </div>
-
-        <div class="form-group">
-            <label for="sinopsis">Sinopsis</label>
-            <textarea name="sinopsis" id="sinopsis" cols="10" rows="5" placeholder="Masukan Sinopsis .." required></textarea>
-        </div>
-
-
-        <center>
-            <button type="submit" class="btn btn-primary">
-                Save
-            </button>
-            <button type="button" class="btn btn-danger">
-                Delete
-            </button>
-        </center>
-    </form>
-
 
 
 </div>
