@@ -28,8 +28,8 @@
             <img src="img/cinema.png" class="logo" width="80px">
             <ul>
                 <li><a href=""></a>HOME</li>
-                <li><a href=""></a>HOME</li>
-                <li><a href=""></a>HOME</li>
+                <li><a href=""></a>FILM</li>
+                <li><a href=""></a>ABOUT</li>
                 <li><a href=""></a>HOME</li>
             </ul>
         </nav>
