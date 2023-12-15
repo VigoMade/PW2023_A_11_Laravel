@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginAdminController;
+use App\Http\Controllers\registerAdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Pagination\LengthAwarePaginator;
 /*
@@ -80,11 +82,14 @@ Route::get('/admin', function () {
     return view('Admin/indexPageAdmin', ['isi' => $paginator]);
 })->name('admin');
 
+//loginAdmin
+Route::get('/loginAdmin', [LoginAdminController::class, 'login'])->name('loginAdmin');
+Route::post('/actionLogin', [LoginAdminController::class, 'actionLogin'])->name('actionLogin');
 
-Route::get('/loginAdmin', function () {
-    return view('/Admin/loginAdmin');
-});
-
+//registerAdmin
+Route::get('/registerAdmin', [registerAdminController::class, 'register'])->name('registerAdmin');
+Route::post('/register/action', [registerAdminController::class, 'actionRegister'])->name('actionRegister');
+Route::get('/register/verify/{verify_key}', [registerAdminController::class, 'verify'])->name('verify');
 
 Route::get('/dashboard', function () {
     return view('/Costumer/dashboard', [
