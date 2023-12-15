@@ -7,12 +7,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Facades\Redirect;
 class AuthController extends Controller
 {
     public function index()
     {
-        return view('auth.login');
+        return view('login');
     }
 
     public function login(Request $request){
@@ -23,13 +23,7 @@ class AuthController extends Controller
         ]);
 
         // login code 
-        
-        if(Auth::attempt($request->only('email','password'))){
-            return redirect('home');
-        }
-
-        return redirect('login')->withError('Login details are not valid');
-
+        return view('Costumer.dashboard');
     }
 
     public function register_view()
@@ -52,7 +46,7 @@ class AuthController extends Controller
 
         // save in users table 
         User::create([
-            'nama'=>$request->name,
+            'nama'=>$request->nama,
             'username'=>$request->username,
             'gender'=>$request->gender,
             'tanggalLahir'=>$request->tanggalLahir,
@@ -61,25 +55,16 @@ class AuthController extends Controller
             'noTelp'=>$request->noTelp,
         ]);
 
-        // login user here 
-        
-        if(Auth::attempt($request->only('email','password'))){
-            return redirect('home');
-        }
-
-        return redirect('register')->withError('Error');
+        return Redirect::to('login');
 
     }
-
-    public function home(){
-        return view('home');
-    }
-
+    // public function home(){
+    //     return view('homePage');
+    // }
      public function logout(){
         Session::flush();
         Auth::logout();
         return redirect('');
     }
-
     
 }

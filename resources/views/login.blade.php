@@ -91,7 +91,9 @@
                             <h1 class="mb-4 text-center mt-5">LOGIN WITH YOUR PROFILE</h1>
                         </div>
 
-                        <form action="{{ url('dashboard') }}" class="submit">
+                        <form action="{{ route('login') }}" class="submit" method="post">
+                            @csrf
+                            @method('post')
                             <div class="row-fluid mb-4">
                                 <div class="col-fluid-12 d-flex justify-content-center align-items-center">
                                     <input type="text" class="form-control custom-input" id="email"
@@ -100,8 +102,8 @@
                             </div>
                             <div class="row-fluid  mb-2">
                                 <div class="col-fluid-12 d-flex justify-content-center align-items-center">
-                                    <input type="password" class="form-control custom-input" id="pwd"
-                                        placeholder="Masukan password " name="pswd" required>
+                                    <input type="password" class="form-control custom-input" id="password"
+                                        placeholder="Masukan password " name="password" required>
                                 </div>
                             </div>
                             <div class="row-fluid">
@@ -116,7 +118,7 @@
                             </div>
                             <div class="row-fluid">
                                 <div class="col text-center mb-5 mt-2">
-                                    <p>Create account?<a href="{{ url('registrasi') }}">Create</a></p>
+                                    <p>Create account?<a href="{{ route('register_view') }}">Create</a></p>
                                 </div>
                             </div>
                         </form>

@@ -35,7 +35,7 @@
         </nav>
         <div class="content">
             <h1>CINEMA ATMA</h1>
-            <a href="#">Login</a>
+            <a href="{{ route('login') }}">Login</a>
         </div>
     </div>
 </body>

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Pagination\LengthAwarePaginator;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -157,7 +157,7 @@ Route::get('/dashboard', function () {
             ],
         ]
     ]);
-});
+})->name('dashboard');
 
 Route::get('/userControl', function () {
     $isi = [
@@ -232,9 +232,20 @@ Route::get('/transaksi2', function () {
     return view('transaksi2');
 });
 
-Route::get('/registrasi', function () {
-    return view('registrasi');
-});
+//login
+
+Route::get('login',[AuthController::class,'index'])->name('login_view');
+Route::post('login',[AuthController::class,'login'])->name('login')->middleware('throttle:2,1');
+
+Route::get('register',[AuthController::class,'register_view'])->name('register_view');
+Route::post('register',[AuthController::class,'register'])->name('register')->middleware('throttle:2,1');
+
+
+
+Route::get('home',[AuthController::class,'home'])->name('home');
+Route::get('logout',[AuthController::class,'logout'])->name('logout');
+
+
 Route::get('/profile', function () {
     return view('Costumer/profile');
 });

@@ -58,7 +58,9 @@
             </div>
             <div class="col-lg-6 col-lg-6 mt-2 ">
                 <div class="container-fluid mt-1 mb-5 kertas">
-                    <form action="{{ url('login') }}" class="submit">
+                    <form action="{{ route('register') }}" class="submit" method="post">
+                        @csrf
+                        @method('post')
                         <div class="row mt-1">
                             <div class="col-fluid-12">
                                 <label for="nama">Nama</label>
@@ -93,14 +95,14 @@
                         <div class="row mt-1">
                             <div class="col-2">
                                 <div class="form-check">
-                                    <input type="radio" class="form-check-input" id="laki" name="optradio"
+                                    <input type="radio" class="form-check-input" id="laki" name="gender"
                                         value="Laki-laki">Laki-laki
                                     <label class="form-check-label" for="laki"></label>
                                 </div>
                             </div>
                             <div class="col-1">
                                 <div class="form-check">
-                                    <input type="radio" class="form-check-input" id="perempuan" name="optradio"
+                                    <input type="radio" class="form-check-input" id="perempuan" name="gender"
                                         value="Perempuan">Perempuan
                                     <label class="form-check-label" for="perempuan"></label>
                                 </div>
@@ -116,7 +118,7 @@
                         <div class="row mt-1">
                             <div class="col-fluid-12">
                                 <input type="date" class="form-control custom-input" id="date"
-                                    placeholder="Tanggal Lahir" name="lahir" required>
+                                    placeholder="Tanggal Lahir" name="tanggalLahir" required>
                             </div>
                         </div>
 
@@ -144,14 +146,14 @@
                         </div>
                         <div class="row mt-1">
                             <div class="col-fluid-12">
-                                <label for="password">Password</label>
+                                <label for="noTelp">Nomor Telpon</label>
                             </div>
                         </div>
 
                         <div class="row mt-1">
                             <div class="col-fluid-12">
-                                <input type="text" class="form-control custom-input" id="telepon"
-                                    placeholder="isi No Handphone" name="telepon" required>
+                                <input type="text" class="form-control custom-input" id="noTelp"
+                                    placeholder="isi No Handphone" name="noTelp" required>
                             </div>
                         </div>
                         <div class="row-fluid mt-3 mb-5">
