@@ -13,6 +13,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
 |
 */
 
+Route::get('/seatBioskop', function () {
+    return view('seatBioskop');
+});
+
 Route::get('/', function () {
     return view('login');
 });
@@ -113,6 +117,15 @@ Route::get('/transaksi1', function () {
 Route::get('/transaksi2', function () {
     return view('transaksi2');
 });
+
+Route::get('/registrasi', function () {
+    return view('registrasi');
+});
+Route::get('/profile', function () {
+    return view('Costumer/profile');
+});
+
+
 
 Route::get('/form', function () {
     return view('Admin/formDaftarFilm');

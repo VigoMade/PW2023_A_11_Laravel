@@ -63,6 +63,7 @@
 
                         <div class="text-center text-lg-center mt-4 pt-2">
                             <button type="submit" class="btn btn-custom btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem; background-color:#CEA945;" onclick="validateForm()">Login</button>
+                            <a href=" {{url('login')}}" class="btn btn-danger btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Back</a>
                         </div>
 
                     </form>

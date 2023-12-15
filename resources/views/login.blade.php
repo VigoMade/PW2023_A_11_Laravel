@@ -1,59 +1,117 @@
-@extends('navbarDashboard')
+@extends('navbarLoginRegister')
 @section ('content')
 <style>
     body {
         background-color: #04192E;
-
         color: white;
+    }
+
+    img {
+        border-radius: 20px;
+    }
+
+    .custom-input {
+        width: 500px;
+        height: 45px;
+        background-color: #014384 !important;
+        color: white !important;
+        border: 1px solid #04192E;
+        border-radius: 19px;
+    }
+
+    .custom-input::placeholder {
+        color: white;
+    }
+
+    .card {
+        color: white;
+        border-radius: 20px;
+        background-color: #06314CBF !important;
 
     }
+
+    .login {
+        width: 200px;
+        height: 35px;
+        color: #FFF;
+        text-align: center;
+        font-family: Marcellus SC;
+        border-radius: 20px;
+    }
 </style>
-<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
-    <div class="row gx-lg-5 align-items-center mb-5">
-        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-            <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                Gofit Indonesia<br />
-                <span style="color: hsl(218, 81%, 75%)">Make Your Body Perfect</span>
-            </h1>
-            <p class="mb-4 opacity-70 justify-content-center" style="color: hsl(218, 81%, 85%); text-align: justify">
-                Are you tired of feeling sluggish and out of shape? Do you want to
-                improve your health and fitness level? Look no further than your
-                local gym!
-            </p>
-            <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%); text-align: justify;">
-                At the gym, you'll have access to state-of-the-art equipment and a
-                variety of fitness classes to help you reach your fitness goals.
-                Whether you're looking to build muscle, lose weight, or simply
-                improve your overall health, our gym has everything you need to
-                succeed. Our experienced and knowledgeable trainers are on hand to
-                provide guidance and support every step of the way. They can help
-                you develop a personalized workout plan that's tailored to your
-                specific needs and goals, and they'll be there to encourage and
-                motivate you to push yourself to new heights. And with a community
-                of like-minded individuals, you'll have the support and
-                encouragement you need to stay motivated and committed to your
-                fitness journey. You'll make new friends, have fun, and most
-                importantly, see results.
-            </p>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<div class="container-fluid px-4 px-md-5 text-lg-start ">
+    <div class="row gx-lg-5  ">
+        <h1>Now Showing</h1>
+    </div>
+    <div class="row gx-lg-5 mb-5 ">
+        <div class="col-lg-6 mb-5 mt-1 d-flex justify-content-center align-items-center" style="z-index: 10">
+            <div class="card bg-danger" style="width: 350px">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner img-fluid">
+                        <div class="carousel-item active">
+                            <img src="{{url('img/film1.jpg')}}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{url('img/film2.jpg')}}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{url('img/film3.jpg')}}" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-            <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-            <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
-            <div class="card bg-glass">
-                <div class="card-body px-4 py-5 px-md-5">
-                    <form class="form" action="{{ url('dashboard') }}">
-                        <div>
-                            <h4 class="mb-3 text-center">LOGIN</h4>
+
+        <div class="col-lg-6 mt-1">
+            <div class="container-fluid  mt-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="mb-4 text-center mt-5">LOGIN WITH YOUR PROFILE</h1>
+                    </div>
+
+                    <form action="{{url('dashboard')}}" class="submit">
+                        <div class="row-fluid mb-4">
+                            <div class="col-fluid-12 d-flex justify-content-center align-items-center">
+                                <input type="text" class="form-control custom-input" id="email" placeholder="Masukan email" name="email" required>
+                            </div>
                         </div>
-                        <div class="form-floating mb-2">
-                            <input type="text" class="form-control" id="floatingInput" name="nama_pegawai" placeholder="Nama Pegawai" required />
-                            <label for="floatingInput">Nama Pegawai</label>
+                        <div class="row-fluid  mb-2">
+                            <div class="col-fluid-12 d-flex justify-content-center align-items-center">
+                                <input type="password" class="form-control custom-input" id="pwd" placeholder="Masukan password " name="pswd" required>
+                            </div>
                         </div>
-                        <div class="form-floating">
-                            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required />
-                            <label for="floatingPassword">Password</label>
+                        <div class="row-fluid">
+                            <div class="col text-end me-5">
+                                <p><a class="link-opacity-100" href="#">Forgot Password?</a></p>
+                            </div>
                         </div>
-                        <button type="submit" style="width: 100%;" class="btn btn-primary btn-block mb-2 mt-3">Login</button>
+                        <div class="row-fluid mb-2">
+                            <div class="col d-flex justify-content-center align-items-center ">
+                                <button type="submit" class="btn btn-warning login">Login</button>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="col text-center mb-5 mt-2">
+                                <p>Create account?<a href="{{url('registrasi')}}">Create</a></p>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -61,4 +119,15 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function() {
+
+        $('#carouselExampleIndicators').carousel();
+
+
+        $('#carouselExampleIndicators').carousel({
+            interval: 3000
+        });
+    });
+</script>
 @endsection

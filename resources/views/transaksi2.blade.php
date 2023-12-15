@@ -130,9 +130,6 @@
     }
 
 
-    .paddingForStickt {
-        margin: 100px 0px;
-    }
 
     .sejajarkan {
         display: flex;
@@ -187,6 +184,85 @@
         background-color: black;
         color: #CC9F00;
     }
+
+    .paddingForStickt {
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+
+        .col-md-6.filmBioskop {
+            order: 2;
+            max-width: 650px;
+        }
+
+        .col-md-4 {
+            order: 1;
+
+            text-align: center;
+
+        }
+    }
+
+
+
+    @media (max-width: 550px) {
+
+        .col-md-6.filmBioskop {
+            order: 2;
+            max-width: 450px;
+
+        }
+
+        .totalPembayaran {
+            padding: 0px 15%;
+            align-items: center;
+            text-align: center;
+        }
+
+        .col-md-4 {
+            order: 1;
+
+            text-align: center;
+
+        }
+    }
+
+    @media (max-width: 450px) {
+
+        .col-md-6.filmBioskop {
+            order: 2;
+            max-width: 320px;
+
+        }
+
+        .timePayment {
+            font-size: 12px;
+        }
+
+        .col-md-4 {
+            order: 1;
+
+            text-align: center;
+
+        }
+    }
+
+    @media (max-width: 300px) {
+
+        .col-md-6.filmBioskop {
+            order: 2;
+            max-width: 250px;
+
+        }
+
+        .col-md-4 {
+            order: 1;
+
+            text-align: center;
+
+        }
+    }
 </style>
 
 <body>
@@ -195,7 +271,7 @@
             <li>
                 <div class="row mt-5">
                     <div class="col-lg-12">
-                        <div class="row containerBody">
+                        <div class="row containerBody" style="margin-top: 120px;">
                             <div class="col-md-6 filmBioskop">
                                 <h4>Ringkasan Order</h4>
                                 <p class="nomorOrder" style="color: #A8A8A8">NOMOR ORDER : 1790128301283921839012</p>
@@ -227,11 +303,12 @@
                                 </div>
                                 <hr>
                                 <div class="promoVoucher">
-                                    <h5 class="mb-4">Detail Transaksi</h5>
+                                    <h5 class="mb-4">Promo & Voucher</h5>
                                     <div style="display: flex; align-items: center">
                                         <img src="imgTransaksi2/logoDana.png" alt="" width="30px" height="30px">
 
-                                        <p><Strong>Total Pembayaran : Rp. 54,000</Strong></p>
+                                        <p>Jika Anda memiliki voucher dari DANA, Anda dapat menggunakannya di halaman
+                                            pembayaran seteleh halaman ini. (S&K berlaku)</p>
                                     </div>
                                 </div>
 
@@ -256,7 +333,7 @@
                                 <div class="totalPembayaran" style="margin-bottom: 20px">
                                     <div style="display: flex; justify-content: space-between">
                                         <p style="height: 20px; margin-top: 5px;">TOTAL BAYAR</p>
-                                        <h3>Rp 50000</h3>
+                                        <h3>Rp 54.000,00</h3>
                                     </div>
                                 </div>
                             </div>
@@ -275,51 +352,48 @@
                                 </div>
                             </div>
 
-
-
                         </div>
                     </div>
                 </div>
             </li>
         </ul>
 
-
     </main>
 
     <div class="paddingForStickt">
 
-        <a href="{{url('transaksi2')}}" class="btn btn-custom" style="text-decoration:none;">
-            <h4 class="mb-0">Beli Tiket</h4>
+        <a href="{{ url('dashboard') }}" class="btn btn-custom" style="text-decoration:none;">
+            <h4 class="mb-0">PAYMENT</h4>
         </a>
-        <a href="{{url('dashboard')}}" class="btn btn-custom2" style="text-decoration:none;">
+        <a href="{{ url('dashboard') }}" class="btn btn-custom2" style="text-decoration:none;">
             <h4 class="mb-0">Cancel</h4>
         </a>
-
     </div>
 
-    <script src="{{ asset('js/transaksi1.js') }}"></script>
 
-    <script>
-        // set waktu 5 menit
-        let timeInSeconds = 6 * 50 + 0;
-
-        function updateCountdown() {
-            const minutes = Math.floor(timeInSeconds / 60);
-            const seconds = timeInSeconds % 60;
-            const formattedTime = `${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
-            document.getElementById('countdown').textContent = formattedTime;
-
-            // Decrease
-            timeInSeconds--;
-
-            if (timeInSeconds < 0) {
-                //nanti bakal di route ke halaman sebelum pembayaran
-                window.location.href = "{{ url('dashboard') }}";
-            }
-
-        }
-
-        setInterval(updateCountdown, 1000);
-    </script>
 </body>
+
+<script src="{{ asset('js/transaksi1.js') }}"></script>
+
+<script>
+    // set waktu 5 menit
+    let timeInSeconds = 6 * 50 + 0;
+
+    function updateCountdown() {
+        const minutes = Math.floor(timeInSeconds / 60);
+        const seconds = timeInSeconds % 60;
+        const formattedTime = `${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
+        document.getElementById('countdown').textContent = formattedTime;
+
+        // Decrease
+        timeInSeconds--;
+
+        if (timeInSeconds < 0) {
+            //nanti bakal di route ke halaman sebelum pembayaran
+            window.location.href = "{{ url('dashboard') }}";
+        }
+    }
+
+    setInterval(updateCountdown, 1000);
+</script>
 @endsection

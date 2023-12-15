@@ -1,6 +1,5 @@
 @extends('navbarDashboard')
 @section('content')
-
 <style>
     body {
         background-color: #04192E;
@@ -20,7 +19,7 @@
         overflow-x: auto;
         white-space: nowrap;
         overflow: hidden;
-
+        border-radius: 10px;
     }
 
     .jadwal {
@@ -57,7 +56,7 @@
     }
 
     .jadwal-disable {
-        border: 2px solid #014384;
+        border: 2px solid #06314C;
         margin: 10px 10px;
         padding: 0px 10px;
         align-items: center;
@@ -111,6 +110,20 @@
         color: white;
         border-radius: 0;
     }
+
+    .btn-jamJadwal {
+        background-color: #014384;
+        color: white;
+    }
+
+    .focused {
+        background-color: #fff;
+        /* Warna latar belakang yang diinginkan saat diklik */
+        color: #000;
+        /* Warna teks yang diinginkan saat diklik */
+        cursor: pointer;
+        /* Ubah kursor saat diklik (opsional) */
+    }
 </style>
 
 
@@ -124,7 +137,18 @@
                             <div class="">
                                 <img src="imgTransaksi1/posterSherina2.jpg" alt="" width="250px">
                                 <h5>PETUALANGAN SHERINA 2</h5>
-
+                                <div style="margin: 0px 30px;">
+                                    <p>SHERINA (Sherina Munaf) dan SADAM (Derby Romero), dua teman kecil yang lama
+                                        terpisah,
+                                        bertemu kembali di Kalimantan untuk pelepasliaran orang utan. Reuni manis
+                                        terhenti
+                                        ketika anak orang utan bernama SAYU dicuri sekelompok orang.Sherina dan Sadam
+                                        harus
+                                        berusaha menemukan kembali kebersamaan, demi menyelamatkan Sayu dan juga
+                                        kelangsungan persahabatan mereka yang baru saja tumbuh kembali. Sebuah sekuel
+                                        dari
+                                        film legendaris, bernuansa musikal dengan sentuhan aksi petualangan.</p>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -198,9 +222,9 @@
                                                     SUCIPTO </p>
                                                 <h5 style="color: #A8A8A8">2D</h5>
                                                 <div class="jamTayang">
-                                                    <a href="" class="btn btn-jamJadwal">20 : 00</a>
-                                                    <a href="#" class="btn btn-jamJadwal">21 : 00</a>
-                                                    <a href="#" class="btn btn-jamJadwal">22 : 00</a>
+                                                    <div class="btn btn-jamJadwal">20 : 00</div>
+                                                    <div class="btn btn-jamJadwal">21 : 00</div>
+                                                    <div class="btn btn-jamJadwal">22 : 00</div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -221,9 +245,9 @@
                                                         SUCIPTO </p>
                                                     <h5 style="color: #A8A8A8">2D</h5>
                                                     <div class="jamTayang">
-                                                        <a href="" class="btn btn-jamJadwal">20 : 00</a>
-                                                        <a href="#" class="btn btn-jamJadwal">21 : 00</a>
-                                                        <a href="#" class="btn btn-jamJadwal">22 : 00</a>
+                                                        <div class="btn btn-jamJadwal">20 : 00</div>
+                                                        <div class="btn btn-jamJadwal">21 : 00</div>
+                                                        <div class="btn btn-jamJadwal">22 : 00</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -243,9 +267,9 @@
                                                         SUCIPTO </p>
                                                     <h5 style="color: #A8A8A8">2D</h5>
                                                     <div class="jamTayang">
-                                                        <a href="" class="btn btn-jamJadwal">20 : 00</a>
-                                                        <a href="#" class="btn btn-jamJadwal">21 : 00</a>
-                                                        <a href="#" class="btn btn-jamJadwal">22 : 00</a>
+                                                        <div class="btn btn-jamJadwal">20 : 00</div>
+                                                        <div class="btn btn-jamJadwal">21 : 00</div>
+                                                        <div class="btn btn-jamJadwal">22 : 00</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -265,9 +289,9 @@
                                                         SUCIPTO </p>
                                                     <h5 style="color: #A8A8A8">2D</h5>
                                                     <div class="jamTayang">
-                                                        <a href="" class="btn btn-jamJadwal">20 : 00</a>
-                                                        <a href="#" class="btn btn-jamJadwal">21 : 00</a>
-                                                        <a href="#" class="btn btn-jamJadwal">22 : 00</a>
+                                                        <div class="btn btn-jamJadwal">20 : 00</div>
+                                                        <div class="btn btn-jamJadwal">21 : 00</div>
+                                                        <div class="btn btn-jamJadwal">22 : 00</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -287,14 +311,57 @@
 
     <div class="paddingForStickt">
 
-        <a href="{{url('transaksi2')}}" class="btn btn-custom" style="text-decoration:none;">
+        <a href="{{ url('seatBioskop') }}" class="btn btn-custom" style="text-decoration:none;">
             <h4 class="mb-0">Beli Tiket</h4>
         </a>
 
     </div>
 
 
-    <script src="{{ asset('js/transaksi1.js') }}"></script>
+
 </body>
 
+<footer class="bg-light text-center text-lg-start sticky-bottom">
+    <div class="text-center p-3" style="background-color: #03213B; color:white; font-family:Marcellus SC;">
+        Kelompok 11 © 2023 Copyright:
+        <a class="text-white" href="https://github.com/VigoMade/UTSWeb_A_11.git">UTS Web A Kelompok 11</a>
+    </div>
+</footer>
+<script src="{{ asset('js/transaksi1.js') }}"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var jadwalButtons = document.querySelectorAll('.jadwal');
+
+        jadwalButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Hapus kelas 'focused' dari semua tombol jadwal
+                jadwalButtons.forEach(function(btn) {
+                    btn.classList.remove('focused');
+                });
+
+                // Tambahkan kelas 'focused' ke tombol yang diklik
+                button.classList.add('focused');
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var jamJadwalButtons = document.querySelectorAll('.btn-jamJadwal');
+
+        jamJadwalButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Hapus kelas 'focused' dari semua tombol btn-jamJadwal
+                jamJadwalButtons.forEach(function(btn) {
+                    btn.classList.remove('focused');
+                });
+
+                // Tambahkan kelas 'focused' ke tombol yang diklik
+                button.classList.add('focused');
+            });
+        });
+    });
+</script>
 @endsection
