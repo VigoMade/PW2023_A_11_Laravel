@@ -9,6 +9,7 @@ class Movie extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'namaFilm',
         'genre',
@@ -22,4 +23,5 @@ class Movie extends Model
     ];
     
     
+
 }
