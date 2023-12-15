@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\registerAdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,12 +16,16 @@ use Illuminate\Pagination\LengthAwarePaginator;
 |
 */
 
+Route::get('/homePage', function () {
+    return view('homePage');
+});
+
 Route::get('/seatBioskop', function () {
     return view('seatBioskop');
 });
 
 Route::get('/', function () {
-    return view('login');
+    return view('homePage');
 });
 
 Route::get('/login', function () {
@@ -107,8 +112,8 @@ Route::get('/dashboard', function () {
                 'gambar' => 'https://media.21cineplex.com/webcontent/gallery/pictures/169442926668402_287x421.jpg',
                 'judul' => 'To Catch A Killer',
                 'sinopsis' => 'Eleanor (Shailene Woodley) adalah sosok petugas polisi yang berbakat namun sering bermasalah.
-Kemampuannya ini membuat ia direkrut oleh kepala penyelidik FBI, Lammark (Ben Mendelsohn) untuk
-membantunya mengungkap sosok misterius yang meneror kota.'
+                Kemampuannya ini membuat ia direkrut oleh kepala penyelidik FBI, Lammark (Ben Mendelsohn) untuk
+                membantunya mengungkap sosok misterius yang meneror kota.'
             ],
             [
                 'gambar' => 'https://media.21cineplex.com/webcontent/gallery/pictures/169417258680382_290x426.jpg',
@@ -136,7 +141,8 @@ membantunya mengungkap sosok misterius yang meneror kota.'
                 'sinopsis' => 'ZORA (Amanda Manopo) memiliki seorang adik yaitu NINDA (Nicole Rossi) yang mengidap skizofrenia. Tapi kemudian seorang paranormal bernama SEKAR (Sara Wijayanto) menyatakan bahwa Ninda ternyata adalah seorang indigo,
                  pemilik indera keenam yang bisa melihat dunia lain dan saat ini nyawa Ninda terancam oleh sosok tak kasat mata yang terus mengganggunya. 
                  Untuk menyelamatkannya, bantuan Zora diperlukan.'
-            ],  [
+            ],
+             [
                 'gambar' => 'https://media.21cineplex.com/webcontent/gallery/pictures/169416151382710_290x426.jpg',
                 'judul' => 'Petualangan Sherina 2',
                 'sinopsis' => 'SHERINA (Sherina Munaf) dan SADAM (Derby Romero), dua teman kecil yang lama terpisah, bertemu kembali di Kalimantan untuk pelepasliaran orang utan. Reuni manis terhenti ketika anak orang utan bernama SAYU dicuri sekelompok orang.
@@ -154,11 +160,9 @@ membantunya mengungkap sosok misterius yang meneror kota.'
                 Mereka rela mempertaruhkan nyawa demi kesuksesan misi. Barney Ross (Sylvester Stallone), 
                 Lee Christmas (Jason Statham) akan berhadapan dengan penjual senjata ilegal yang salah satunya dipimpin oleh Iko Uwais.'
             ],
-
         ]
     ]);
-});
-
+})->name('dashboard');
 
 Route::get('/userControl', function () {
     $isi = [
@@ -233,9 +237,20 @@ Route::get('/transaksi2', function () {
     return view('transaksi2');
 });
 
-Route::get('/registrasi', function () {
-    return view('registrasi');
-});
+//login
+
+Route::get('login',[AuthController::class,'index'])->name('login_view');
+Route::post('login',[AuthController::class,'login'])->name('login')->middleware('throttle:2,1');
+
+Route::get('register',[AuthController::class,'register_view'])->name('register_view');
+Route::post('register',[AuthController::class,'register'])->name('register')->middleware('throttle:2,1');
+
+
+
+Route::get('home',[AuthController::class,'home'])->name('home');
+Route::get('logout',[AuthController::class,'logout'])->name('logout');
+
+
 Route::get('/profile', function () {
     return view('Costumer/profile');
 });
@@ -269,7 +284,7 @@ Route::get('/daftar', function () {
             'no' => '2',
             'nama' => 'To Catch A Killer',
             'gambar' =>
-            'https://media.21cineplex.com/webcontent/gallery/pictures/169442926668402_287x421.jpg',
+                'https://media.21cineplex.com/webcontent/gallery/pictures/169442926668402_287x421.jpg',
             'genre' => 'Action',
             'harga' => '60000',
             'JamTayang' => '15.00',
@@ -282,7 +297,7 @@ Route::get('/daftar', function () {
             'no' => '3',
             'nama' => 'It Lives Inside',
             'gambar' =>
-            'https://media.21cineplex.com/webcontent/gallery/pictures/169417258680382_290x426.jpg',
+                'https://media.21cineplex.com/webcontent/gallery/pictures/169417258680382_290x426.jpg',
             'genre' => 'Horror',
             'harga' => '70000',
             'JamTayang' => '18.00',
@@ -296,7 +311,7 @@ Route::get('/daftar', function () {
         [
             'no' => '4',
             'nama' => 'Killers Of Flower moon',
-            'gambar' =>  'https://media.21cineplex.com/webcontent/gallery/pictures/16952093955719_290x426.jpg',
+            'gambar' => 'https://media.21cineplex.com/webcontent/gallery/pictures/16952093955719_290x426.jpg',
             'genre' => 'Action,Romance',
             'harga' => '80000',
             'JamTayang' => '12.00',
@@ -312,7 +327,7 @@ Route::get('/daftar', function () {
             'no' => '5',
             'nama' => 'The Exorcist',
             'gambar' =>
-            'https://media.21cineplex.com/webcontent/gallery/pictures/169450343162224_287x421.jpg',
+                'https://media.21cineplex.com/webcontent/gallery/pictures/169450343162224_287x421.jpg',
             'genre' => 'Horror',
             'harga' => '25000',
             'JamTayang' => '17.00',
@@ -328,7 +343,7 @@ Route::get('/daftar', function () {
             'no' => '6',
             'nama' => 'Indigo',
             'gambar' =>
-            'https://media.21cineplex.com/webcontent/gallery/pictures/169417034165149_290x426.jpg',
+                'https://media.21cineplex.com/webcontent/gallery/pictures/169417034165149_290x426.jpg',
             'genre' => 'Horror',
             'harga' => '3000',
             'JamTayang' => '17.00',
@@ -345,7 +360,7 @@ Route::get('/daftar', function () {
             'no' => '7',
             'nama' => 'Petualangan Sherina 2',
             'gambar' =>
-            'https://media.21cineplex.com/webcontent/gallery/pictures/169416151382710_290x426.jpg',
+                'https://media.21cineplex.com/webcontent/gallery/pictures/169416151382710_290x426.jpg',
             'genre' => 'Slice of Life',
             'harga' => '20000',
             'JamTayang' => '11.00',
@@ -360,14 +375,14 @@ Route::get('/daftar', function () {
             'no' => '8',
             'nama' => 'The Creator',
             'gambar' =>
-            'https://media.21cineplex.com/webcontent/gallery/pictures/169382771567221_290x426.jpg',
+                'https://media.21cineplex.com/webcontent/gallery/pictures/169382771567221_290x426.jpg',
             'genre' => 'Sci-fi',
             'harga' => '70000',
             'JamTayang' => '11.00',
             'JamAkhir' => '20.00',
             'TanggalTayang' => '21-Jan-2023',
             'TanggalAkhir' => '07-Feb-2023',
-            'Sinopsis' =>  "Berkisah tentang perang di masa depan antara 
+            'Sinopsis' => "Berkisah tentang perang di masa depan antara 
             Artificial Iintelligence (AI) atau kecerdasan buatan dan manusia. 
             Pertempuran keduanya membuat dunia menjadi hancur lebur."
         ],
