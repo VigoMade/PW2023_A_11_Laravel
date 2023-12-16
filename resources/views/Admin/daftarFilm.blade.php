@@ -130,7 +130,7 @@
 </div>
 
 <div class="tombol">
-    <a type="button" href="{{url('form')}}" style="display: flex; align-items: center; min-width: 120px; height: 50px; background:#CEA945; border-radius: 20px; margin-left:15px; text-decoration:none; color:white;">
+    <a type="button" href="{{route('Admin.create')}}" style="display: flex; align-items: center; min-width: 120px; height: 50px; background:#CEA945; border-radius: 20px; margin-left:15px; text-decoration:none; color:white;">
         <iconify-icon icon="mdi:movie-plus-outline" width="30"></iconify-icon><strong>Tambah Film</strong>
     </a>
 </div>
@@ -140,7 +140,7 @@
 <div class="borderTable" style="border: 3px solid #06314C; width:98%; height:500px; background-color:#06314C;border-radius:20px; margin-left:30px; margin-top:10px; ">
     <table class="isiTable" style="width: 96%; height:300px; margin-top:50px; margin-left:20px;">
         <tr class="">
-            <th>No</th>
+            <th>Poster Film</th>
             <th>Nama Film</th>
             <th>Genre</th>
             <th>Jam Tayang</th>
@@ -151,22 +151,26 @@
             <th>Sinopsis</th>
             <th>Aksi</th>
         </tr>
-        @forelse($isi as $isian)
+        @forelse($movie as $isian)
         <tr>
-            <td>{{$isian['no']}}</td>
-            <td><img src="{{$isian['gambar']}} " alt="" style="width: 20%;">{{$isian['nama']}}</td>
-            <td>{{$isian['genre']}}</td>
-            <td>{{$isian['JamTayang']}}</td>
-            <td>{{$isian['JamAkhir']}}</td>
-            <td>Rp. {{$isian['harga']}}</td>
-            <td>{{$isian['TanggalTayang']}}</td>
-            <td>{{$isian['TanggalAkhir']}}</td>
-            <td>{!! nl2br($isian['Sinopsis']) !!}</td>
+            <td><img src="/img/{{$isian->imageMovie}}" width="100px" alt="poster"></td>
+            <td>{{$isian->namaFilm}}</td>
+            <td>{{$isian->genre}}</td>
+            <td>{{$isian->jamTayang}}</td>
+            <td>{{$isian->jamAkhir}}</td>
+            <td>Rp. {{$isian->harga}}</td>
+            <td>{{$isian->tanggalTayang}}</td>
+            <td>{{$isian->tanggalAkhir}}</td>
+            <td>{!! nl2br($isian->sinopsis) !!}</td>
             <td class="edit-delete-column">
-                <a href="{{url('form')}}" type="button" class="badge rounded-pill text-bg-warning text-white" style="text-decoration:none;">Edit</a>
-                <button type="button" class="badge rounded-pill text-bg-danger text-white delete-button" id="presensiBtn{{$isian['no']}}">
-                    Delete
-                </button>
+                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{route('Admin.destroy',$isian->id)}}" method="POST">
+                    <a href="{{route('Admin.edit',$isian->id)}}" type="button" class="badge rounded-pill text-bg-warning text-white" style="text-decoration:none;">Edit</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="badge rounded-pill text-bg-danger text-white delete-button" id="presensiBtn{{$isian['no']}}">
+                        Delete
+                    </button>
+                </form>
             </td>
             <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="liveToast{{$isian['no']}}" style="position: fixed; bottom: 10px; right: 10px;">
                 <div class="d-flex">
@@ -183,7 +187,7 @@
         @endforelse
         <div class="pagination mt-3 mb-3">
             <div class="kotak1" style="border:2px solid #06314C; background-color:#CEA945">
-                @if ($isi->onFirstPage())
+                @if ($movie->onFirstPage())
                 <span class="pagination-prev disabled ml-2"><i class="fa fa-arrow-left"></i></span>
                 @else
                 <a href="{{ $isi->previousPageUrl() }}" class="pagination-prev ml-2"><i class="fa fa-arrow-left"></i></a>
@@ -191,7 +195,7 @@
             </div>
 
             <div class="box2" style="border:2px solid #06314C; background-color:#CEA945">
-                @if ($isi->hasMorePages())
+                @if ($movie->hasMorePages())
                 <a href="{{ $isi->nextPageUrl() }}" class="pagination-next ml-2"><i class="fa fa-arrow-right"></i></a>
                 @else
                 <span class="pagination-next disabled ml-2"><i class="fa fa-arrow-right"></i></span>
@@ -200,7 +204,7 @@
 
 
             <div class="pagination-info ml-6">
-                Page {{ $isi->currentPage() }} of {{ $isi->lastPage() }}
+                Page {{ $movie->currentPage() }} of {{ $movie->lastPage() }}
             </div>
         </div>
     </table>
@@ -212,7 +216,14 @@
                 if (event.target.classList.contains('delete-button')) {
                     let idNumber = event.target.id.replace('presensiBtn', '');
                     let toastId = 'liveToast' + idNumber;
-                    showToast(toastId);
+
+
+                    if (confirm('Apakah Anda Yakin ?')) {
+
+                        let form = document.querySelector(`form#presensiBtn${idNumber}`);
+                        form.submit();
+                        showToast(toastId);
+                    }
                 }
             });
         });
@@ -222,6 +233,7 @@
             toast.show();
         }
     </script>
+
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </div>
 <footer class="bg-light text-center text-lg-start" style="margin-top:50px; width:100%;">
