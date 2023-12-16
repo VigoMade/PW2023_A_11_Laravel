@@ -73,7 +73,7 @@
                     <a class="nav-link active" aria-current="page" href="{{url('admin')}}">Admin Page</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('daftar')}}">Daftar Film</a>
+                    <a class="nav-link" href="{{url('Admin')}}">Daftar Film</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('userControl')}}">User Control</a>

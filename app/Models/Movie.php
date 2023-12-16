@@ -9,7 +9,8 @@ class Movie extends Model
 {
     use HasFactory;
 
-
+    protected $table = 'movies';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'namaFilm',
         'genre',
@@ -21,7 +22,4 @@ class Movie extends Model
         'harga',
         'sinopsis',
     ];
-    
-    
-
 }
