@@ -87,7 +87,9 @@ $images = ['img/banner1.jpg', 'img/banner2.jpg', 'img/banner3.jpg'];
                                     </div>
                                 </div>
                                 @empty
-                                <p>No movies available.</p>
+                                <div class="alert alert-danger">
+                                    No Movies Available.
+                                </div>
                                 @endforelse
                             </div>
                         </div>
