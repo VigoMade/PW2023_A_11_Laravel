@@ -2,11 +2,7 @@
 
 @section('content')
 <?php
-$images = [
-    "img/banner1.jpg",
-    "img/banner2.jpg",
-    "img/banner3.jpg"
-]
+$images = ['img/banner1.jpg', 'img/banner2.jpg', 'img/banner3.jpg'];
 ?>
 <style>
     body {
@@ -53,51 +49,53 @@ $images = [
 </style>
 <div class="container d-flex" style="margin-top: 95px;">
     <div class="row">
-        <div class="col-6">
-            <h3 class="mb-3"><Strong>Now Playing</Strong></h3>
-        </div>
-        <div class="col-6 text-right">
-            <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev" style="background-color:#CEA945;">
-                <i class="fa fa-arrow-left"></i> Previous
-            </a>
-            <a class="btn btn-primary mb-3" href="#carouselExampleIndicators2" role="button" data-slide="next" style="background-color:#CEA945;">
-                Next <i class="fa fa-arrow-right"></i>
-            </a>
-        </div>
-        <div class="col-12">
-            <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner" style="margin-left:50px;">
-                    @php
-                    $chunks = array_chunk($movie, 3);
-                    @endphp
-                    @foreach($chunks as $key => $chunk)
-                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                        <div class="row">
-                            @foreach($chunk as $film)
-                            <div class="col-md-4 mb-3">
-                                <div class="card" style="width: 288px; height:424px;">
-                                    <a href="{{url('transaksi1')}}">
-                                        <div style="width: 288px; height:424px;">
-                                            <img class="img-fluid" style="width: 100%; height: 100%;" alt="290x426" src="{{ $film['gambar'] }}" />
+        <section class="pt-5 pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <h3 class="mb-3">Now Playing</h3>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev" style="background-color:#CEA945">
+                            <i class="fa fa-arrow-left"></i>Previous
+                        </a>
+                        <a class="btn btn-primary mb-3" href="#carouselExampleIndicators2" role="button" data-slide="next" style="background-color:#CEA945">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-12">
+                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                @forelse ($movies->chunk(3) as $key => $chunk)
+                                <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                                    <div class="row">
+                                        @foreach ($chunk as $movie)
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card" style="width: 71%; height: 93%;">
+                                                <a href="{{ url('transaksi1') }}">
+                                                    <img class="img-fluid" alt="{{ $movie->nama }}" src="/img/{{$movie->imageMovie}}" />
+                                                </a>
+                                                <div class="card-body">
+                                                    <h4 class="card-title">{{ $movie->namaFilm }}</h4>
+                                                    <p class="card-text">
+                                                        {{ $movie->sinopsis }}
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </a>
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            {{ $film['judul'] }}
-                                        </h4>
-                                        <p class="card-text">
-                                            {{ $film['sinopsis'] }}
-                                        </p>
+                                        @endforeach
                                     </div>
                                 </div>
+                                @empty
+                                <div class="alert alert-danger">
+                                    No Movies Available.
+                                </div>
+                                @endforelse
                             </div>
-                            @endforeach
                         </div>
                     </div>
-                    @endforeach
                 </div>
-            </div>
-        </div>
+        </section>
     </div>
 </div>
 
@@ -114,8 +112,8 @@ $images = [
     <div class="carousel-inner">
         <?php foreach ($images as $i => $gbr) {
         ?>
-            <div class="carousel-item <?php echo $i === 0 ? "active" : ""; ?>">
-                <img src="<?php echo $gbr; ?>" class="d-block w-100" role="img" aria-label="Gambar ke-<?php echo ($i + 1); ?>" focusable="false" />
+            <div class="carousel-item <?php echo $i === 0 ? 'active' : ''; ?>">
+                <img src="<?php echo $gbr; ?>" class="d-block w-100" role="img" aria-label="Gambar ke-<?php echo $i + 1; ?>" focusable="false" />
             </div>
         <?php } ?>
     </div>
@@ -142,5 +140,10 @@ $images = [
     });
 </script>
 </body>
-
+<footer class="bg-light text-center text-lg-start sticky-bottom">
+    <div class="text-center p-3" style="background-color: #03213B; color:white; font-family:Marcellus SC;">
+        Kelompok 11 © 2023 Copyright:
+        <a class="text-white" href="https://github.com/VigoMade/UTSWeb_A_11.git">UTS Web A Kelompok 11</a>
+    </div>
+</footer>
 @endsection

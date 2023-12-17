@@ -15,10 +15,10 @@
             background-color: #03213B;
             color: #fff;
             /* display: flex;
-                                                                                                                        flex-direction: column;
-                                                                                                                        align-items: center;
-                                                                                                                        justify-content: center; */
-            height: 100vh;
+                                                                                                                                                                                                                                                                                                                                                                                                                                flex-direction: column;
+                                                                                                                                                                                                                                                                                                                                                                                                                                align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                justify-content: center; */
+            height: auto;
         }
 
         .main-content {
@@ -32,12 +32,7 @@
             /* Tinggi footer */
         }
 
-        .footer {
-            background-color: red;
-            height: 50px;
-            /* Tinggi footer */
-            width: 100%;
-        }
+
 
 
 
@@ -148,14 +143,13 @@
             color: rgb(158, 248, 158);
         }
 
+
         .seatBioskop {
             margin-top: 10%;
             margin-left: 20%;
         }
 
-        .containerSeat {
-            margin-top: 15%;
-        }
+
 
         .btn-custom:hover {
             background-color: black;
@@ -168,8 +162,74 @@
             color: white;
             border-radius: 0;
         }
-    </style>
 
+        @media (max-width: 720px) {
+
+            .seatBioskop {
+                margin-top: 150px;
+                margin-left: 30px;
+                max-width: 300px;
+
+            }
+
+            .text {
+                text-align: center;
+            }
+
+            .seat {
+                background-color: #444451;
+                height: 25px;
+                width: 15px;
+                margin: 3px;
+                padding-top: 5px;
+                padding-left: 2px;
+                padding-right: 5px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+
+
+                font-size: 8px;
+                user-select: none;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .seatBioskop {
+                margin-top: 100px;
+                margin-left: 30px;
+                max-width: 300px;
+                ;
+            }
+
+            .text {
+                text-align: center;
+            }
+
+
+            .seat {
+                background-color: #444451;
+                height: 25px;
+                width: 15px;
+                margin: 3px;
+                padding-top: 5px;
+                padding-left: 2px;
+                padding-right: 5px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+
+
+                font-size: 8px;
+                user-select: none;
+            }
+        }
+
+        @media (max-width: 290px) {
+            .container-fluid a {
+                font-size: 10px;
+            }
+        }
+    </style>
 
     <body>
         <div class="seatBioskop">
@@ -205,7 +265,7 @@
                     {{-- <img src="imgSeatBioskop/screen.png" alt="" width="450px;"> --}}
                 </div>
 
-                <div class="">
+                <div class="containerSeat">
                     <div class="row">
                         <div class="seat">
                             A1
@@ -309,13 +369,18 @@
 
         <footer>
             <a href="{{ url('transaksi2') }}" class="btn btn-custom" style="text-decoration:none;">
-                <h4 class="mb-0">Beli Tiket</h4>
+                <h4 class="mb-0">Lanjutkan</h4>
             </a>
         </footer>
 
     </body>
 
-
+    <footer class="bg-light text-center text-lg-start sticky-bottom">
+        <div class="text-center p-3" style="background-color: #03213B; color:white; font-family:Marcellus SC;">
+            Kelompok 11 © 2023 Copyright:
+            <a class="text-white" href="https://github.com/VigoMade/UTSWeb_A_11.git">UTS Web A Kelompok 11</a>
+        </div>
+    </footer>
     <script src="{{ asset('js/seatBioskop.js') }}"></script>
 
     <script>

@@ -43,28 +43,35 @@
                 <div class="col-md-9 col-lg-6 col-xl-5">
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Sample image">
                 </div>
+
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                    <form class="form" action="{{url('admin')}}">
+                    @if(session('error'))
+                    <div class="alert alert-danger">
+                        <b>waduh!</b> {{ session('error') }}
+                    </div>
+                    @endif
+                    <form method="post" class="form" action="{{route('actionLogin')}}">
                         @csrf
                         <div class="divider d-flex align-items-center my-4">
                             <p class="text-center fw-bold mx-3 mb-0">Admin Login</p>
                         </div>
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid username " required />
-                            <label class="form-label" for="form3Example3">Username</label>
+                            <label>Email</label>
+                            <input class="form-control" type="email" name="email" placeholder="Email" required>
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-3">
-                            <input type="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter password" required />
-                            <label class="form-label" for="form3Example4">Password</label>
+                            <label>Password</label>
+                            <input class="form-control" type="password" name="password" placeholder="Password" required>
                         </div>
 
                         <div class="text-center text-lg-center mt-4 pt-2">
                             <button type="submit" class="btn btn-custom btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem; background-color:#CEA945;" onclick="validateForm()">Login</button>
+                            <a href=" {{url('login')}}" class="btn btn-danger btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Back</a>
                         </div>
-
+                        <p class="text-center">Belum Punya akun? <a href="{{route('registerAdmin')}}">Register sini</a></p>
                     </form>
                 </div>
             </div>
