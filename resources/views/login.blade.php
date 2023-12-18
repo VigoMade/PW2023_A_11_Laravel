@@ -116,12 +116,12 @@
                                     <button type="submit" class="btn btn-warning login">Login</button>
                                 </div>
                             </div>
-                            <div class="row-fluid">
-                                <div class="col text-center mb-5 mt-2">
-                                    <p>Create account?<a href="{{ route('register_view') }}">Create</a></p>
-                                </div>
-                            </div>
                         </form>
+                        <div class="row-fluid">
+                            <div class="col text-center mb-5 mt-2">
+                                <p>Create account?<a href="{{ route('register_view') }}">Create</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

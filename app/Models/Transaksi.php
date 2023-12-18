@@ -16,6 +16,13 @@ class Transaksi extends Model
         'totBayar',
     ];
 
-    
+    public function movie()
+    {
+        return $this->belongsTo(Movie::class, 'id_movie', 'id');
+    }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 }

@@ -15,9 +15,9 @@
             background-color: #03213B;
             color: #fff;
             /* display: flex;
-                                                                                                                                                                                                                                                                                                                                                                                                                                flex-direction: column;
-                                                                                                                                                                                                                                                                                                                                                                                                                                align-items: center;
-                                                                                                                                                                                                                                                                                                                                                                                                                                justify-content: center; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                        flex-direction: column;
+                                                                                                                                                                                                                                                                                                                                                                                                                                        align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                        justify-content: center; */
             height: auto;
         }
 
@@ -31,9 +31,6 @@
             padding-bottom: 50px;
             /* Tinggi footer */
         }
-
-
-
 
 
         .movie-container {

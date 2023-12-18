@@ -27,6 +27,11 @@ class User extends Authenticatable
         'noTelp',
     ];
 
+    public function transaksis()
+    {
+        return $this->hasMany(Transaksi::class, 'id_user', 'id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

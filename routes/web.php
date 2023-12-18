@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginAdminController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\registerAdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -123,7 +124,6 @@ Route::get('register', [AuthController::class, 'register_view'])->name('register
 Route::post('register', [AuthController::class, 'register'])->name('register')->middleware('throttle:2,1');
 
 
-
 Route::get('home', [AuthController::class, 'home'])->name('home');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -132,8 +132,8 @@ Route::get('/profile', function () {
     return view('Costumer/profile');
 });
 
-
-
+Route::get('/profile', [ProfileController::class, 'profile_view'])->name('profile_view');
 
 //movie
 Route::resource('/Admin', MovieController::class);
+Route::get('/transaksi1/{movie}', [MovieController::class, 'show_transaksi'])->name('show_transaksi');
