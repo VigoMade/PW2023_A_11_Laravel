@@ -5,6 +5,7 @@ use App\Http\Controllers\registerAdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\managemenUserController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\tampilFilmController;
 
@@ -102,71 +103,8 @@ Route::post('/register/action', [registerAdminController::class, 'actionRegister
 Route::get('/register/verify/{verify_key}', [registerAdminController::class, 'verify'])->name('verify');
 
 
-
-Route::get('/userControl', function () {
-    $isi = [
-        [
-            'no' => '1',
-            'nama' => 'dodi',
-            'noInvoice' => '1231',
-            'pemesanan' => 'Ticket',
-            'subTotal' => '50000',
-        ],
-        [
-            'no' => '2',
-            'nama' => 'dada',
-            'noInvoice' => '1232',
-            'pemesanan' => 'Ticket',
-            'subTotal' => '100000',
-
-        ],
-        [
-            'no' => '3',
-            'noInvoice' => '1233',
-            'nama' => 'dedi',
-            'pemesanan' => 'Ticket',
-            'subTotal' => '150000',
-
-        ],
-        [
-            'no' => '4',
-            'noInvoice' => '1231',
-            'nama' => 'dodo',
-            'pemesanan' => 'Ticket',
-            'subTotal' => '20000',
-
-        ],
-        [
-            'no' => '5',
-            'noInvoice' => '1231',
-            'nama' => 'doda',
-            'pemesanan' => 'Ticket',
-            'subTotal' => '50000',
-
-        ],
-        [
-            'no' => '6',
-            'noInvoice' => '1235',
-            'nama' => 'doda', // Define a default value for 'user'
-            'pemesanan' => 'Ticket',
-            'subTotal' => '30000',
-        ],
-    ];
-
-    $perPage = 3;
-    $currentPage = request()->get('page', 1);
-
-    $chunkedData = array_chunk($isi, $perPage);
-    $paginator = new LengthAwarePaginator(
-        $chunkedData[$currentPage - 1],
-        count($isi),
-        $perPage,
-        $currentPage,
-        ['path' => route('userControl')]
-    );
-
-    return view('Admin/userControl', ['isi' => $paginator]);
-})->name('userControl');
+//userControl
+Route::resource('/UserControl', managemenUserController::class);
 
 Route::get('/transaksi1', function () {
     return view('transaksi1');
@@ -197,5 +135,5 @@ Route::get('/profile', function () {
 
 
 
-
+//movie
 Route::resource('/Admin', MovieController::class);

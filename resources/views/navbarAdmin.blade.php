@@ -76,7 +76,7 @@
                     <a class="nav-link" href="{{url('Admin')}}">Daftar Film</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('userControl')}}">User Control</a>
+                    <a class="nav-link" href="{{url('UserControl')}}">User Control</a>
                 </li>
             </ul>
             <form class="d-flex mt-3" role="search">

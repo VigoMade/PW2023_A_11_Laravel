@@ -167,12 +167,12 @@
                     <a href="{{route('Admin.edit',$isian->id)}}" type="button" class="badge rounded-pill text-bg-warning text-white" style="text-decoration:none;">Edit</a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="badge rounded-pill text-bg-danger text-white delete-button" id="presensiBtn{{$isian['no']}}">
+                    <button type="submit" class="badge rounded-pill text-bg-danger text-white delete-button" id="presensiBtn{{$isian->id}}">
                         Delete
                     </button>
                 </form>
             </td>
-            <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="liveToast{{$isian['no']}}" style="position: fixed; bottom: 10px; right: 10px;">
+            <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="liveToast{{$isian->id}}" style="position: fixed; bottom: 10px; right: 10px;">
                 <div class="d-flex">
                     <div class="toast-body">
                         <i class="fa-solid fa-check" style="color: #ffffff;"></i> Berhasil Menghapus Film

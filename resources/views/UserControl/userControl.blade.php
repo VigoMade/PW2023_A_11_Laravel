@@ -123,27 +123,27 @@
 
 <div class="borderTable" style="border: 3px solid #06314C; width:98%; height:500px; background-color:#06314C;border-radius:20px; margin-left:30px; margin-top:10px; ">
     <table class="isiTable" style="width: 96%; height:300px; margin-top:50px; margin-left:20px;">
-        <tr class="">
-            <th>No</th>
-            <th>User</th>
-            <th>No Invoice</th>
-            <th>Pemesanan</th>
-            <th>Sub Total</th>
+        <tr>
+            <th>UserName</th>
+            <th>Name</th>
+            <th>email</th>
             <th>Aksi</th>
         </tr>
-        @forelse($isi as $isian)
+        @forelse($user as $isian)
         <tr>
-            <td>{{$isian['no']}}</td>
-            <td> <img src="{{asset('img/avatar2.png')}}" alt="Avatar" class="rounded-circle" style="width: 32px; height: 32px;">User Static</td>
-            <td>{{$isian['noInvoice']}}</td>
-            <td>{{$isian['pemesanan']}}</td>
-            <td>Rp. {{$isian['subTotal']}}</td>
+            <td> <img src="{{asset('img/avatar2.png')}}" alt="Avatar" class="rounded-circle" style="width: 32px; height: 32px;">{{$isian->username}}</td>
+            <td>{{$isian->nama}}</td>
+            <td>{{$isian->email}}</td>
             <td class="edit-delete-column">
-                <button type="button" class="badge rounded-pill text-bg-danger text-white delete-button" id="presensiBtn{{$isian['no']}}">
-                    Delete
-                </button>
+                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{route('UserControl.destroy',$isian->id)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="badge rounded-pill text-bg-danger text-white delete-button" id="presensiBtn{{$isian->id}}">
+                        Delete
+                    </button>
+                </form>
             </td>
-            <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="liveToast{{$isian['no']}}" style="position: fixed; bottom: 10px; right: 10px;">
+            <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="liveToast{{$isian->id}}" style="position: fixed; bottom: 10px; right: 10px;">
                 <div class="d-flex">
                     <div class="toast-body">
                         <i class="fa-solid fa-check" style="color: #ffffff;"></i> Banned User
@@ -158,16 +158,16 @@
         @endforelse
         <div class="pagination mt-3 mb-3">
             <div class="kotak1" style="border:2px solid #06314C; background-color:#CEA945">
-                @if ($isi->onFirstPage())
+                @if ($user->onFirstPage())
                 <span class="pagination-prev disabled ml-2"><i class="fa fa-arrow-left"></i></span>
                 @else
-                <a href="{{ $isi->previousPageUrl() }}" class="pagination-prev ml-2"><i class="fa fa-arrow-left"></i></a>
+                <a href="{{ $user->previousPageUrl() }}" class="pagination-prev ml-2"><i class="fa fa-arrow-left"></i></a>
                 @endif
             </div>
 
             <div class="box2" style="border:2px solid #06314C; background-color:#CEA945">
-                @if ($isi->hasMorePages())
-                <a href="{{ $isi->nextPageUrl() }}" class="pagination-next ml-2"><i class="fa fa-arrow-right"></i></a>
+                @if ($user->hasMorePages())
+                <a href="{{ $user->nextPageUrl() }}" class="pagination-next ml-2"><i class="fa fa-arrow-right"></i></a>
                 @else
                 <span class="pagination-next disabled ml-2"><i class="fa fa-arrow-right"></i></span>
                 @endif
@@ -175,7 +175,7 @@
 
 
             <div class="pagination-info ml-6">
-                Page {{ $isi->currentPage() }} of {{ $isi->lastPage() }}
+                Page {{ $user->currentPage() }} of {{ $user->lastPage() }}
             </div>
         </div>
     </table>
@@ -184,7 +184,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.isiTable').addEventListener('click', function(event) {
-                if (event.target.classList.contains('delete-button')) {
+                if (event.target.classList.contains('badge')) {
                     let idNumber = event.target.id.replace('presensiBtn', '');
                     let toastId = 'liveToast' + idNumber;
                     showToast(toastId);
