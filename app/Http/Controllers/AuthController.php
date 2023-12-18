@@ -17,16 +17,23 @@ class AuthController extends Controller
         return view('login');
     }
 
-    public function login(Request $request)
-    {
-        // validate data 
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
+   public function login(Request $request)
+{   
+    $movies = Movie::all();
+    // validate data 
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
 
-        return view('Costumer.landingPage');
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user(); 
+       
+        return view('Costumer.dashboard', compact('user','movies'));
+    } else {
+        return back()->withErrors(['email' => 'Invalid credentials']);
     }
+}
 
     public function register_view()
     {
@@ -42,7 +49,6 @@ class AuthController extends Controller
             'gender' => 'required',
             'tanggalLahir' => 'required',
             'email' => 'required|unique:users|email',
-            //nanti untuk password tinggal menambahkan |confirmed jika ingin ada confirmasi password
             'password' => 'required',
             'noTelp' => 'required',
         ]);
@@ -60,13 +66,13 @@ class AuthController extends Controller
 
         return Redirect::to('login');
     }
-    // public function home(){
-    //     return view('homePage');
-    // }
+    
     public function logout()
     {
         Session::flush();
         Auth::logout();
         return redirect('');
     }
+
+
 }

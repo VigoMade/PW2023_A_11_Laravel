@@ -22,4 +22,11 @@ class Movie extends Model
         'harga',
         'sinopsis',
     ];
+
+    public function transaksis()
+    {
+        return $this->hasMany(Transaksi::class, 'id_movie', 'id');
+    }
+
+
 }

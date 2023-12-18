@@ -20,6 +20,12 @@ class MovieController extends Controller
         return view('Admin.createMovie');
     }
 
+    public function show_transaksi($movieId){
+        $movie = Movie::find($movieId);
+        
+        return view('transaksi1', compact('movie'));
+    }
+
     /**
      * store
      *
