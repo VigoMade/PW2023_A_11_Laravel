@@ -20,12 +20,23 @@ class MovieController extends Controller
         return view('Admin.createMovie');
     }
 
+
+   public function show_transaksi($movieId){
+    $movieFind = Movie::find($movieId);
+    // $movies_with_same_title = Movie::where('namaFilm', $movieFind->namaFilm)
+    //                               ->where('id', '!=', $movieId)
+    //                               ->get();
+    $movies = Movie::all();
+    return view('transaksi1', compact('movieFind', 'movies'));
+}
+
     public function show_transaksi($movieId)
     {
         $movie = Movie::find($movieId);
 
         return view('transaksi1', compact('movie'));
     }
+
 
     /**
      * store

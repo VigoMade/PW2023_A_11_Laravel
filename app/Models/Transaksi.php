@@ -13,6 +13,7 @@ class Transaksi extends Model
         'id_user',
         'id_movie', 
         'seat',
+        'totalSeat',
         'totBayar',
     ];
 

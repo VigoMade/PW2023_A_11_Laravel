@@ -9,6 +9,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\managemenUserController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\tampilFilmController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +24,6 @@ use App\Http\Controllers\tampilFilmController;
 
 Route::get('/homePage', function () {
     return view('homePage');
-});
-
-Route::get('/seatBioskop', function () {
-    return view('seatBioskop');
 });
 
 Route::get('/', function () {
@@ -137,3 +134,15 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 //movie
 Route::resource('/Admin', MovieController::class);
 Route::get('/transaksi1/{movie}', [MovieController::class, 'show_transaksi'])->name('show_transaksi');
+
+
+//transaksi
+Route::get('/seatBioskop/{movie}', [TransaksiController::class, 'seatBioskop_view'])->name('seatBioskop_view');
+
+// Route untuk menampilkan formulir pembuatan transaksi
+Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('transaksi.create');
+// Route untuk menyimpan transaksi baru
+Route::post('/transaksi/store/{movie}', [TransaksiController::class, 'store'])->name('transaksi.store');
+Route::get('/transaksi2/store/{movie}', [TransaksiController::class, 'show_transaksi2'])->name('show_transaksi2');
+
+

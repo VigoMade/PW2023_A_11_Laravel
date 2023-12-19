@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->foreignId('id_movie')->constrained('movies')->onDelete('cascade');
             $table->string('seat');
+            $table->integer('totalSeat');
             $table->integer('totBayar');
             $table->timestamps();
         });
