@@ -275,7 +275,7 @@
                                 <div class="col-md-6 filmBioskop">
                                     <h4>Ringkasan Order</h4>
                                     <p class="nomorOrder" style="color: #A8A8A8">NOMOR ORDER :
-                                        17901283012839218390{{ $transaksi->id }}</p>
+                                        1790128301218390{{ $transaksi->id }}</p>
                                     <hr>
                                     <div class="detailTransaksi">
                                         <h5 class="mb-4">Detail Transaksi</h5>
@@ -363,25 +363,87 @@
                 </li>
             </ul>
 
-
-
-
         </main>
         <!-- Modal -->
         <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="paymentModalLabel">Pembayaran</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Konten modal di sini -->
-                        <p>Isi dengan konten modal yang ingin ditampilkan saat tombol Payment diklik.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="button" class="btn btn-primary">Simpan Perubahan</button>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="container mb-5">
+                                <div class="row d-flex align-items-baseline">
+                                    <div class="col-xl-9">
+                                        <p style="color: #111213;font-size: 20px;"><strong>NOMOR ORDER:
+                                                1790128301218390{{ $transaksi->id }}</strong></p>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <div class="col-md-12">
+                                        <div class="text-center">
+                                            <img width="100px" src="/img/cinema.png" alt="">
+                                            <h5 class="">CINEMA ATMA</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-8">
+                                            <ul class="list-unstyled">
+                                                <li class="text-muted">To: <span
+                                                        style="color:#8f8061 ;">{{ $user->nama }}</span>
+                                                </li>
+                                                <li class="text-muted">AMBARRUKMO, STUDIO</li>
+                                                <li class="text-muted">2900 km - PLAZA AMBARRUKMO LT.3, Jl. ADI SUCIPTO
+                                                </li>
+                                                <li class="text-muted"><i class="fas fa-phone"></i> 507-231-139</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xl-4">
+                                            <p class="text-muted">Invoice</p>
+                                            <ul class="list-unstyled">
+                                                <li class="text-muted"><i class="fas fa-circle" style="color:#8f8061 ;"></i>
+                                                    <span class="fw-bold">Seat: </span>{{ $transaksi->seat }}
+                                                </li>
+                                                <li class="text-muted"><i class="fas fa-circle" style="color:#8f8061 ;"></i>
+                                                    <span class="fw-bold">Jam Tayang:
+                                                    </span>{{ date('H:i', strtotime($movieFind->jamTayang)) }}
+                                                </li>
+                                                <li class="text-muted"><i class="fas fa-circle" style="color:#8f8061 ;"></i>
+                                                    <span class="fw-bold">Tanggal Tayang:
+                                                    </span>{{ $movieFind->tanggalTayang }}
+                                                </li>
+                                                <li class="text-muted"><i class="fas fa-circle" style="color:#8f8061;"></i>
+                                                    <span class="me-1 fw-bold">Status:</span><span
+                                                        class="badge bg-warning text-black fw-bold">
+                                                        Unpaid</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-xl-8">
+
+                                        </div>
+                                        <div class="col-xl-3">
+                                            <ul class="list-unstyled">
+                                                <li class="text-muted ms-3"><span class="text-black me-4">Total
+                                                        tiket</span>Rp. {{ $movieFind->harga * $transaksi->totalSeat }}
+                                                </li>
+                                                <li class="text-muted ms-3 mt-2"><span
+                                                        class="text-black me-4">Admin</span>Rp. 4000</li>
+                                            </ul>
+                                            <p class="text-black float-start"><span class="text-black me-3"> Total
+                                                    Amount</span><span style="font-size: 25px;">Rp.
+                                                    {{ $movieFind->harga * $transaksi->totalSeat + 4000 }}</span></p>
+                                        </div>
+                                        <button class="btn btn-primary mt-0">
+                                            Pay
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
