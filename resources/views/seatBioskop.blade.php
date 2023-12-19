@@ -15,9 +15,9 @@
             background-color: #03213B;
             color: #fff;
             /* display: flex;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    flex-direction: column;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    align-items: center;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    justify-content: center; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        flex-direction: column;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        justify-content: center; */
             height: auto;
         }
 
@@ -374,9 +374,9 @@
                 </p>
         </div>
 
-        <button type="submit" class="btn btn-custom" style="text-decoration:none;">
+        <a id="form-link" class="btn btn-custom" style="text-decoration:none;">
             <h4 class="mb-0">Lanjutkan</h4>
-        </button>
+        </a>
         </form>
     </body>
 
@@ -469,5 +469,10 @@
 
         // Initial count and total set
         updateSelectedCount();
+
+        document.getElementById('form-link').addEventListener('click', function(e) {
+            e.preventDefault(); // Mencegah perilaku bawaan dari tautan
+            document.querySelector('form.submit').submit(); // Men-submit form
+        });
     </script>
 @endsection
