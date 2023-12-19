@@ -131,7 +131,11 @@
         </tr>
         @forelse($user as $isian)
         <tr>
+            @if($isian->imgProfile == null)
+            <td> <img src="{{asset('img/user2-160x160.jpg')}}" alt="Avatar" class="rounded-circle" style="width: 32px; height: 32px;">{{$isian->username}}</td>
+            @else
             <td> <img src="/img/{{$isian->imgProfile}}" alt="Avatar" class="rounded-circle" style="width: 32px; height: 32px;">{{$isian->username}}</td>
+            @endif
             <td>{{$isian->nama}}</td>
             <td>{{$isian->email}}</td>
             <td class="edit-delete-column">

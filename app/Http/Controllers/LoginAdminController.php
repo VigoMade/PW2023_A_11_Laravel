@@ -12,7 +12,7 @@ class LoginAdminController extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return redirect('admin');
+            return redirect('AdminIndex');
         } else {
             return view('Admin/loginAdmin');
         }
@@ -29,7 +29,7 @@ class LoginAdminController extends Controller
         if ($data->password == $request->password) {
 
             if ($data->active) {
-                return redirect('admin');
+                return redirect('AdminIndex');
             }
         } else {
             Session::flash('error', 'Email atau Password salah');

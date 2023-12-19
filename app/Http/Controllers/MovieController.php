@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Movie;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
     public function index()
     {
-        $movie = Movie::latest()->paginate(5);
-
-        return view('Admin.daftarFilm', compact('movie'));
+        $movies = Movie::latest()->paginate(3);
+        return view('Admin.daftarFilm', compact('movies'));
     }
+
 
     public function create()
     {
@@ -21,21 +22,16 @@ class MovieController extends Controller
     }
 
 
-   public function show_transaksi($movieId){
-    $movieFind = Movie::find($movieId);
-    // $movies_with_same_title = Movie::where('namaFilm', $movieFind->namaFilm)
-    //                               ->where('id', '!=', $movieId)
-    //                               ->get();
-    $movies = Movie::all();
-    return view('transaksi1', compact('movieFind', 'movies'));
-}
-
     public function show_transaksi($movieId)
     {
-        $movie = Movie::find($movieId);
-
-        return view('transaksi1', compact('movie'));
+        $movieFind = Movie::find($movieId);
+        // $movies_with_same_title = Movie::where('namaFilm', $movieFind->namaFilm)
+        //                               ->where('id', '!=', $movieId)
+        //                               ->get();
+        $movies = Movie::all();
+        return view('transaksi1', compact('movieFind', 'movies'));
     }
+
 
 
     /**
