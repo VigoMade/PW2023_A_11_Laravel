@@ -274,8 +274,8 @@
                             <div class="row containerBody" style="margin-top: 120px;">
                                 <div class="col-md-6 filmBioskop">
                                     <h4>Ringkasan Order</h4>
-                                    <p class="nomorOrder" style="color: #A8A8A8">NOMOR ORDER : 1790128301283921839012</p>
-
+                                    <p class="nomorOrder" style="color: #A8A8A8">NOMOR ORDER :
+                                        17901283012839218390{{ $transaksi->id }}</p>
                                     <hr>
                                     <div class="detailTransaksi">
                                         <h5 class="mb-4">Detail Transaksi</h5>
@@ -346,10 +346,10 @@
                                 {{-- sisi kanan --}}
                                 <div class="col-md-4" style="text-align: center">
                                     <div class="">
-                                        <img style="border-radius: 20px" src="imgTransaksi1/posterSherina2.jpg"
+                                        <img style="border-radius: 20px" src="/img/{{ $movieFind->imageMovie }}"
                                             alt="" width="300px">
-                                        <h5 style="color: white; margin-top: 20px; ">PETUALANGAN SHERINA
-                                            2</h5>
+                                        <h5 style="color: white; margin-top: 20px; ">{{ $movieFind->namaFilm }}
+                                        </h5>
                                         <p style="color: white; margin-top: 30px;margin-bottom: 0px">AMBARRUKMO, STUDIO 5
                                         </p>
                                         <p class="" style="color: #A8A8A8">2900 km - PLAZA AMBARRUKMO LT.3, Jl.
@@ -363,18 +363,39 @@
                 </li>
             </ul>
 
+
+
+
         </main>
+        <!-- Modal -->
+        <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="paymentModalLabel">Pembayaran</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Konten modal di sini -->
+                        <p>Isi dengan konten modal yang ingin ditampilkan saat tombol Payment diklik.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-primary">Simpan Perubahan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="paddingForStickt">
 
-            <a href="{{ url('dashboard') }}" class="btn btn-custom" style="text-decoration:none;">
+            <a class="btn btn-custom" style="text-decoration:none;">
                 <h4 class="mb-0">PAYMENT</h4>
             </a>
-            <a href="{{ url('dashboard') }}" class="btn btn-custom2" style="text-decoration:none;">
+            <a class="btn btn-custom2" style="text-decoration:none;">
                 <h4 class="mb-0">Cancel</h4>
             </a>
         </div>
-
 
     </body>
 
@@ -400,5 +421,16 @@
         }
 
         setInterval(updateCountdown, 1000);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentButton = document.querySelector('.btn-custom');
+            const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+
+            paymentButton.addEventListener('click', function() {
+                paymentModal.show();
+            });
+        });
     </script>
 @endsection

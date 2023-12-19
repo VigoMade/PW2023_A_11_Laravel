@@ -46,6 +46,7 @@ class TransaksiController extends Controller
 
         $transaksi = Transaksi::where('id_user', $user->id)
             ->where('id_movie', $movieFind->id)
+            ->latest('created_at')
             ->first();
 
         return view('transaksi2', compact('movieFind','user','transaksi'));
