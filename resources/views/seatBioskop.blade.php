@@ -15,9 +15,9 @@
             background-color: #03213B;
             color: #fff;
             /* display: flex;
-                                                                                                                                                                                                                                                                                                                                                                                                                                        flex-direction: column;
-                                                                                                                                                                                                                                                                                                                                                                                                                                        align-items: center;
-                                                                                                                                                                                                                                                                                                                                                                                                                                        justify-content: center; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                flex-direction: column;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                justify-content: center; */
             height: auto;
         }
 
@@ -231,6 +231,9 @@
     <body>
         <div class="seatBioskop">
             <h3>AMBARRUKMO</h3>
+            <p>user id : {{ $user->id }}</p>
+            <p>id movie {{ $movieFind->id }}</p>
+            <p>jam tayang : {{ $movieFind->jamTayang }}</p>
             <p style="color: #A8A8A8;">2900 km - PLAZA AMBARRUKMO LT.3, Jl. ADI SUCIPTO</p>
         </div>
         <div class="main-content">
@@ -257,119 +260,124 @@
                 </li>
 
             </ul>
-            <div class="pembungkusSeat">
-                <div class="screen" style="margin-bottom: 40px;">
-                    {{-- <img src="imgSeatBioskop/screen.png" alt="" width="450px;"> --}}
-                </div>
 
-                <div class="containerSeat">
-                    <div class="row">
-                        <div class="seat">
-                            A1
+            <form action="{{ route('transaksi.store') }}" class="submit" method="POST">
+                @csrf
+                @method('post')
+                <input type="hidden" name="id_user" value="{{ $user->id }}">
+                <input type="hidden" name="id_movie" value="{{ $movieFind->id }}">
+                <input type="hidden" name="seat" id="selected-seats" value="">
+                <input type="hidden" name="totalSeat" value="">
+                <input type="hidden" name="totBayar" id="total-payment" value="">
+
+
+                <div class="pembungkusSeat">
+                    <div class="screen" style="margin-bottom: 40px;">
+                        {{-- <img src="imgSeatBioskop/screen.png" alt="" width="450px;"> --}}
+                    </div>
+
+                    <div class="containerSeat">
+                        <div class="row">
+                            <div class="seat">
+                                A1
+                            </div>
+                            <div class="seat">A2</div>
+                            <div class="seat">A3</div>
+                            <div class="seat">A4</div>
+                            <div class="seat">A5</div>
+                            <div class="seat">A6</div>
+                            <div class="seat">A7</div>
+                            <div class="seat">A8</div>
+                            <div class="seat">A9</div>
+                            <div class="seat">A10</div>
+                            <div class="seat">A11</div>
+                            <div class="seat">A12</div>
                         </div>
-                        <div class="seat">A2</div>
-                        <div class="seat">A3</div>
-                        <div class="seat">A4</div>
-                        <div class="seat">A5</div>
-                        <div class="seat">A6</div>
-                        <div class="seat">A7</div>
-                        <div class="seat">A8</div>
-                        <div class="seat">A9</div>
-                        <div class="seat">A10</div>
-                        <div class="seat">A11</div>
-                        <div class="seat">A12</div>
-                    </div>
 
-                    <div class="row">
+                        <div class="row">
+                            <div class="seat">B1</div>
+                            <div class="seat">B2</div>
+                            <div class="seat">B3</div>
+                            <div class="seat sold">B4</div>
+                            <div class="seat sold">B5</div>
+                            <div class="seat">B6</div>
+                            <div class="seat">B7</div>
+                            <div class="seat">B8</div>
+                            <div class="seat sold">B9</div>
+                            <div class="seat">B10</div>
+                            <div class="seat">B11</div>
+                            <div class="seat">B12</div>
+                        </div>
+                        <div class="row">
+                            <div class="seat">C1</div>
+                            <div class="seat">C2</div>
+                            <div class="seat">C3</div>
+                            <div class="seat">C4</div>
+                            <div class="seat">C5</div>
+                            <div class="seat">C6</div>
+                            <div class="seat sold">C7</div>
+                            <div class="seat sold">C8</div>
+                            <div class="seat">C9</div>
+                            <div class="seat">C10</div>
+                            <div class="seat sold">C11</div>
+                            <div class="seat sold">C12</div>
+                        </div>
+                        <div class="row">
+                            <div class="seat">D1</div>
+                            <div class="seat">D2</div>
+                            <div class="seat">D3</div>
+                            <div class="seat">D4</div>
+                            <div class="seat">D5</div>
+                            <div class="seat">D6</div>
+                            <div class="seat">D7</div>
+                            <div class="seat">D8</div>
+                            <div class="seat">D9</div>
+                            <div class="seat">D10</div>
+                            <div class="seat">D11</div>
+                            <div class="seat">D12</div>
 
-                        <div class="seat">B1</div>
-                        <div class="seat">B2</div>
-                        <div class="seat">B3</div>
-                        <div class="seat sold">B4</div>
-                        <div class="seat sold">B5</div>
-                        <div class="seat">B6</div>
-                        <div class="seat">B7</div>
-                        <div class="seat">B8</div>
-                        <div class="seat sold">B9</div>
-                        <div class="seat">B10</div>
-                        <div class="seat">B11</div>
-                        <div class="seat">B12</div>
-                    </div>
-                    <div class="row">
-
-                        <div class="seat">C1</div>
-                        <div class="seat">C2</div>
-                        <div class="seat">C3</div>
-                        <div class="seat">C4</div>
-                        <div class="seat">C5</div>
-                        <div class="seat">C6</div>
-                        <div class="seat sold">C7</div>
-                        <div class="seat sold">C8</div>
-                        <div class="seat">C9</div>
-                        <div class="seat">C10</div>
-                        <div class="seat sold">C11</div>
-                        <div class="seat sold">C12</div>
-                    </div>
-                    <div class="row">
-                        <div class="seat">D1</div>
-                        <div class="seat">D2</div>
-                        <div class="seat">D3</div>
-                        <div class="seat">D4</div>
-                        <div class="seat">D5</div>
-                        <div class="seat">D6</div>
-                        <div class="seat">D7</div>
-                        <div class="seat">D8</div>
-                        <div class="seat">D9</div>
-                        <div class="seat">D10</div>
-                        <div class="seat">D11</div>
-                        <div class="seat">D12</div>
-
-                    </div>
-                    <div class="row">
-                        <div class="seat">E1</div>
-                        <div class="seat">E2</div>
-                        <div class="seat">E3</div>
-                        <div class="seat sold">E4</div>
-                        <div class="seat sold">E5</div>
-                        <div class="seat">E6</div>
-                        <div class="seat">E7</div>
-                        <div class="seat">E8</div>
-                        <div class="seat sold">E9</div>
-                        <div class="seat">E10</div>
-                        <div class="seat">E11</div>
-                        <div class="seat">E12</div>
-                    </div>
-                    <div class="row">
-                        <div class="seat">F1</div>
-                        <div class="seat">F2</div>
-                        <div class="seat">F3</div>
-                        <div class="seat">F4</div>
-                        <div class="seat sold">F5</div>
-                        <div class="seat sold">F6</div>
-                        <div class="seat sold">F7</div>
-                        <div class="seat">F8</div>
-                        <div class="seat sold">F9</div>
-                        <div class="seat sold">F10</div>
-                        <div class="seat sold">F11</div>
-                        <div class="seat">F12</div>
+                        </div>
+                        <div class="row">
+                            <div class="seat">E1</div>
+                            <div class="seat">E2</div>
+                            <div class="seat">E3</div>
+                            <div class="seat sold">E4</div>
+                            <div class="seat sold">E5</div>
+                            <div class="seat">E6</div>
+                            <div class="seat">E7</div>
+                            <div class="seat">E8</div>
+                            <div class="seat sold">E9</div>
+                            <div class="seat">E10</div>
+                            <div class="seat">E11</div>
+                            <div class="seat">E12</div>
+                        </div>
+                        <div class="row">
+                            <div class="seat">F1</div>
+                            <div class="seat">F2</div>
+                            <div class="seat">F3</div>
+                            <div class="seat">F4</div>
+                            <div class="seat sold">F5</div>
+                            <div class="seat sold">F6</div>
+                            <div class="seat sold">F7</div>
+                            <div class="seat">F8</div>
+                            <div class="seat sold">F9</div>
+                            <div class="seat sold">F10</div>
+                            <div class="seat sold">F11</div>
+                            <div class="seat">F12</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-
-            <p class="text">
-                Kursi yang dipilih <span id="count">0</span> dengan total harga kursi yang sudah dipilih RP. <span
-                    id="total">0</span>
-            </p>
-
+                <p class="text">
+                    Kursi yang dipilih <span id="count">0</span> dengan total harga kursi yang sudah dipilih RP. <span
+                        id="total">0</span>
+                </p>
         </div>
 
-        <footer>
-            <a href="{{ url('transaksi2') }}" class="btn btn-custom" style="text-decoration:none;">
-                <h4 class="mb-0">Lanjutkan</h4>
-            </a>
-        </footer>
-
+        <button type="submit" class="btn btn-custom" style="text-decoration:none;">
+            <h4 class="mb-0">Lanjutkan</h4>
+        </button>
+        </form>
     </body>
 
     <footer class="bg-light text-center text-lg-start sticky-bottom">
@@ -402,17 +410,18 @@
         // Update total and count
         function updateSelectedCount() {
             const selectedSeats = document.querySelectorAll(".row .seat.selected");
-
-            const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
-
-            localStorage.setItem("selectedSeats", JSON.stringify(seatsIndex));
+            const seatsIndex = [...selectedSeats].map((seat) => seat.textContent);
 
             const selectedSeatsCount = selectedSeats.length;
-
             count.innerText = selectedSeatsCount;
-            total.innerText = selectedSeatsCount * ticketPrice;
 
-            setMovieData(movieSelect.selectedIndex, movieSelect.value);
+            // Update hidden input value for selected seats
+            document.getElementById("selected-seats").value = seatsIndex.join(",");
+
+            // Calculate total payment and update the hidden input value
+            const totalPayment = selectedSeatsCount * ticketPrice;
+            total.innerText = totalPayment;
+            document.getElementById("total-payment").value = totalPayment;
         }
 
 

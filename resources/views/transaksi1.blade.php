@@ -126,7 +126,6 @@
         }
     </style>
 
-
     <body>
         <ul class="list-unstyled">
             <li>
@@ -135,10 +134,10 @@
                         <div class="row containerBody">
                             <div class="col-md-3 filmBioskop">
                                 <div class="">
-                                    <img src="/img/{{ $movie->imageMovie }}" alt="" width="250px">
-                                    <h5>{{ $movie->namaFilm }}</h5>
+                                    <img src="/img/{{ $movieFind->imageMovie }}" alt="" width="250px">
+                                    <h5>{{ $movieFind->namaFilm }}</h5>
                                     <div style="margin: 0px 30px;">
-                                        <p>{{ $movie->sinopsis }}</p>
+                                        <p>{{ $movieFind->sinopsis }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -203,6 +202,39 @@
                                 </div>
 
                                 <div class="jamJadwal">
+
+                                    <div class="card">
+                                        <div class="card-body cardBodyJamJadwal">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <!-- Tampilkan informasi film lain -->
+                                                    <h5 class="card-title">AMBARRUKMO XXI</h5>
+                                                    <p class="alamatBioskop">2900 km - PLAZA AMBARRUKMO LT.3, Jl. ADI
+                                                        SUCIPTO </p>
+                                                    <div class="jamTayang">
+                                                        <h5 style="color: #A8A8A8">{{ $movieFind->genre }}</h5>
+
+                                                        @foreach ($movies as $movie)
+                                                            @if ($movie->namaFilm === $movieFind->namaFilm)
+                                                                <div class="btn btn-jamJadwal"
+                                                                    movieid="{{ $movie->id }}">
+                                                                    {{ date('H:i', strtotime($movie->jamTayang)) }}
+                                                                    <p>{{ $movie->id }}</p>
+                                                                </div>
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                {{-- <img src="{{ $other_movie->gambar }}" alt="" width="30px">
+                                                    <p>{{ $other_movie->harga }}</p> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div class="jamJadwal">
                                     <div class="card">
                                         <div class="card-body cardBodyJamJadwal">
                                             <div class="row">
@@ -223,9 +255,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    {{-- <div class="jamJadwal">
+
+
+                            {{-- <div class="jamJadwal">
                                         <div class="card">
                                             <div class="card-body cardBodyJamJadwal">
                                                 <div class="row">
@@ -291,26 +325,20 @@
                                                 </div>
                                             </div>
                                         </div> --}}
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
+                </div>
+                </div>
             </li>
         </ul>
-
         <div class="paddingForStickt">
-
-            <a href="{{ url('seatBioskop') }}" class="btn btn-custom" style="text-decoration:none;">
+            <a href="{{ route('seatBioskop_view', ['movie' => $movie->id]) }}" class="btn btn-custom"
+                style="text-decoration:none;">
                 <h4 class="mb-0">Beli Tiket</h4>
             </a>
-
         </div>
-
-
-
     </body>
-
     <footer class="bg-light text-center text-lg-start sticky-bottom">
         <div class="text-center p-3" style="background-color: #03213B; color:white; font-family:Marcellus SC;">
             Kelompok 11 © 2023 Copyright:
@@ -318,6 +346,8 @@
         </div>
     </footer>
     <script src="{{ asset('js/transaksi1.js') }}"></script>
+
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -339,6 +369,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Ambil semua button jamJadwal
             var jamJadwalButtons = document.querySelectorAll('.btn-jamJadwal');
 
             jamJadwalButtons.forEach(function(button) {
@@ -351,6 +382,42 @@
                     // Tambahkan kelas 'focused' ke tombol yang diklik
                     button.classList.add('focused');
                 });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var movieId = null;
+
+            // Tangkap klik pada setiap tombol jamJadwal
+            var jamJadwalButtons = document.querySelectorAll('.btn-jamJadwal');
+            jamJadwalButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Hapus kelas 'focused' dari semua tombol btn-jamJadwal
+                    jamJadwalButtons.forEach(function(btn) {
+                        btn.classList.remove('focused');
+                    });
+
+                    // Tambahkan kelas 'focused' ke tombol yang diklik
+                    button.classList.add('focused');
+
+                    // Ambil movieId dari atribut 'movieid' pada tombol yang diklik
+                    movieId = button.getAttribute('movieid');
+                });
+            });
+
+            // Tangkap klik pada tombol "Beli Tiket" dan buat URL dengan movieId yang telah diambil
+            var beliTiketButton = document.querySelector('.paddingForStickt a.btn-custom');
+            beliTiketButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Mencegah tindakan default dari link
+
+                // Buat URL dengan movieId yang telah diambil
+                var url = "{{ route('seatBioskop_view', ['movie' => ':movieId']) }}";
+                url = url.replace(':movieId', movieId);
+
+                // Redirect ke URL yang telah dibuat
+                window.location.href = url;
             });
         });
     </script>
