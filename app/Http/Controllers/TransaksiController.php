@@ -16,7 +16,7 @@ class TransaksiController extends Controller
          return view('seatBioskop', compact('movieFind', 'user'));
     }
 
-     public function store(Request $request)
+     public function store(Request $request, $movieId)
     {
         $this->validate($request, [
             'id_user' => 'required',
@@ -34,6 +34,20 @@ class TransaksiController extends Controller
             'totBayar' => $request->totBayar,
         ]);
 
-        return redirect()->route('Admin.index');
+        $movieFind = Movie::find($movieId);
+     
+
+        return redirect()->route('show_transaksi2', ['movie' => $movieId]);
+    }
+
+    public function show_transaksi2($movieId){
+        $movieFind = Movie::find($movieId);
+        $user = Auth::user(); 
+
+        $transaksi = Transaksi::where('id_user', $user->id)
+            ->where('id_movie', $movieFind->id)
+            ->first();
+
+        return view('transaksi2', compact('movieFind','user','transaksi'));
     }
 }

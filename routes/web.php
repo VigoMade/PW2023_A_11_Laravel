@@ -142,6 +142,7 @@ Route::get('/seatBioskop/{movie}', [TransaksiController::class, 'seatBioskop_vie
 // Route untuk menampilkan formulir pembuatan transaksi
 Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('transaksi.create');
 // Route untuk menyimpan transaksi baru
-Route::post('/transaksi/store', [TransaksiController::class, 'store'])->name('transaksi.store');
+Route::post('/transaksi/store/{movie}', [TransaksiController::class, 'store'])->name('transaksi.store');
+Route::get('/transaksi2/store/{movie}', [TransaksiController::class, 'show_transaksi2'])->name('show_transaksi2');
 
 

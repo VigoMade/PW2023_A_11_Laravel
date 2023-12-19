@@ -15,9 +15,9 @@
             background-color: #03213B;
             color: #fff;
             /* display: flex;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                flex-direction: column;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                align-items: center;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                justify-content: center; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    flex-direction: column;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    justify-content: center; */
             height: auto;
         }
 
@@ -261,13 +261,13 @@
 
             </ul>
 
-            <form action="{{ route('transaksi.store') }}" class="submit" method="POST">
+            <form action="{{ route('transaksi.store', ['movie' => $movieFind->id]) }}" class="submit" method="POST">
                 @csrf
                 @method('post')
                 <input type="hidden" name="id_user" value="{{ $user->id }}">
                 <input type="hidden" name="id_movie" value="{{ $movieFind->id }}">
                 <input type="hidden" name="seat" id="selected-seats" value="">
-                <input type="hidden" name="totalSeat" value="">
+                <input type="hidden" name="totalSeat" id="totalSeat" value="">
                 <input type="hidden" name="totBayar" id="total-payment" value="">
 
 
@@ -399,7 +399,7 @@
 
         // let ticketPrice = +movieSelect.value;
         //nanti diganti menggunakan passing data melalui routes untuk 50000 nya
-        let ticketPrice = +50000;
+        let ticketPrice = +{{ $movieFind->harga }};
 
         // Save selected movie index and price
         function setMovieData(movieIndex, moviePrice) {
@@ -422,6 +422,9 @@
             const totalPayment = selectedSeatsCount * ticketPrice;
             total.innerText = totalPayment;
             document.getElementById("total-payment").value = totalPayment;
+
+            // Update hidden input value for total selected seats
+            document.getElementById("totalSeat").value = selectedSeatsCount;
         }
 
 

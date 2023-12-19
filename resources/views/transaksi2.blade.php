@@ -279,17 +279,20 @@
                                     <hr>
                                     <div class="detailTransaksi">
                                         <h5 class="mb-4">Detail Transaksi</h5>
-
+                                        <p>id transaksi : {{ $transaksi->id }}</p>
+                                        <p>id user : {{ $user->id }}</p>
+                                        <p>id movie : {{ $movieFind->id }}</p>
                                         <div class="sejajarkan">
                                             <p>TIKET</p>
-                                            <p>5x</p>
+                                            <p>{{ $transaksi->totalSeat }}x</p>
                                         </div>
 
                                         <div class="sejajarkan">
                                             <p>KURSI REGULER</p>
                                             <div style="display: flex">
-                                                <p class="mr-2">Rp.50000 </p>
-                                                <p style="color: #A8A8A8; padding-left: 5px;">x1</p>
+                                                <p class="mr-2">{{ $movieFind->harga }} </p>
+                                                <p style="color: #A8A8A8; padding-left: 5px;">x{{ $transaksi->totalSeat }}
+                                                </p>
                                             </div>
                                         </div>
 
@@ -335,7 +338,7 @@
                                     <div class="totalPembayaran" style="margin-bottom: 20px">
                                         <div style="display: flex; justify-content: space-between">
                                             <p style="height: 20px; margin-top: 5px;">TOTAL BAYAR</p>
-                                            <h3>Rp 54.000,00</h3>
+                                            <h3>Rp. {{ $transaksi->totBayar + 4000 }}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -354,7 +357,6 @@
                                         </p>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
