@@ -151,7 +151,7 @@
             <th>Sinopsis</th>
             <th>Aksi</th>
         </tr>
-        @forelse($movie as $isian)
+        @forelse($movies as $isian)
         <tr>
             <td><img src="/img/{{$isian->imageMovie}}" width="100px" alt="poster"></td>
             <td>{{$isian->namaFilm}}</td>
@@ -187,16 +187,16 @@
         @endforelse
         <div class="pagination mt-3 mb-3">
             <div class="kotak1" style="border:2px solid #06314C; background-color:#CEA945">
-                @if ($movie->onFirstPage())
+                @if ($movies->onFirstPage())
                 <span class="pagination-prev disabled ml-2"><i class="fa fa-arrow-left"></i></span>
                 @else
-                <a href="{{ $isi->previousPageUrl() }}" class="pagination-prev ml-2"><i class="fa fa-arrow-left"></i></a>
+                <a href="{{ $movies->previousPageUrl() }}" class="pagination-prev ml-2"><i class="fa fa-arrow-left"></i></a>
                 @endif
             </div>
 
             <div class="box2" style="border:2px solid #06314C; background-color:#CEA945">
-                @if ($movie->hasMorePages())
-                <a href="{{ $isi->nextPageUrl() }}" class="pagination-next ml-2"><i class="fa fa-arrow-right"></i></a>
+                @if ($movies->hasMorePages())
+                <a href="{{ $movies->nextPageUrl() }}" class="pagination-next ml-2"><i class="fa fa-arrow-right"></i></a>
                 @else
                 <span class="pagination-next disabled ml-2"><i class="fa fa-arrow-right"></i></span>
                 @endif
@@ -204,7 +204,7 @@
 
 
             <div class="pagination-info ml-6">
-                Page {{ $movie->currentPage() }} of {{ $movie->lastPage() }}
+                Page {{ $movies->currentPage() }} of {{ $movies->lastPage() }}
             </div>
         </div>
     </table>

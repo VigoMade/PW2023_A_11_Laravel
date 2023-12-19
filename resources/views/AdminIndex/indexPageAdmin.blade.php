@@ -75,14 +75,14 @@
 
 <div class="row align-items-center mt-3 scrollable-content">
     <!-- Colom 1 -->
-    <div class="cardVisit col-md-3 col-sm-6" style="margin-left:50px; width:450px;">
+    <div class="cardVisit col-md-3 col-sm-6" style="margin-left:7%; width:450px;">
         <div class="card p-0 mx-3" style="background-color:#06314C">
             <div class="card-body">
                 <div class="d-flex" style="color:white;">
-                    <iconify-icon icon="material-symbols:ads-click" style="color: white;" width="125"></iconify-icon>
+                    <iconify-icon icon="carbon:user-filled" style="color: white;" width="125"></iconify-icon></iconify-icon>
                     <div class="text-start" style="margin-top:30px;">
-                        <p style="font-size:20px;" class="m-0">Site Visit</p>
-                        <h2>Click 1.000</h2>
+                        <p style="font-size:20px;" class="m-0">Total User</p>
+                        <h2>{{$totalUsers}}</h2>
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                     <iconify-icon icon="ic:outline-attach-money" style="color: white;" width="125"></iconify-icon>
                     <div class="text-start" style="margin-top:30px;">
                         <p style="font-size:20px;" class="m-0">Total Sales</p>
-                        <h2>Rp. 30,192,000</h2>
+                        <h2>Rp. {{$totalBayar}}</h2>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                     <iconify-icon icon="mdi:chart-bell-curve-cumulative" style="color: white;" width="125"></iconify-icon>
                     <div class="text-start" style="margin-top:30px;">
                         <p style="font-size:20px;" class="m-0">Total Transaksi</p>
-                        <h2>100 Transaksi</h2>
+                        <h2>{{$totalTransaksis}}</h2>
                     </div>
                 </div>
             </div>
@@ -131,25 +131,22 @@
 </legend>
 
 <div class="borderTable" style="border: 3px solid #06314C; width:91%; height:400px; background-color:#06314C;border-radius:20px; margin-left:65px; ">
-    <table class="isiTable" style="width: 90%; height:300px; margin-top:50px; margin-left:50px;">
-        <tr class="">
-            <th>No</th>
+    <table class="isiTable" style="width: 90%; height:300px; margin-top:20px; margin-left:50px;">
+        <tr>
             <th>No Invoice</th>
-            <th>Pemesanan</th>
-            <th>Sub Total</th>
+            <th>film</th>
+            <th>seat</th>
+            <th>Total Pembayaran</th>
             <th>Status</th>
         </tr>
-        @forelse($isi as $isian)
+        @forelse($transaksis as $isian)
         <tr>
-            <td>{{$isian['no']}}</td>
-            <td>{{$isian['noInvoice']}}</td>
-            <td>{{$isian['pemesanan']}}</td>
-            <td>Rp. {{$isian['subTotal']}}</td>
-            <td>@if($isian['status'] == 'Selesai')
-                <span class="badge rounded-pill text-bg-info text-white" style="font-size: 1.2rem; padding: 0.5rem 1rem;">{{$isian['status']}}</span>
-                @else
-                <span class="badge rounded-pill text-bg-success" style="font-size: 1.2rem; padding: 0.5rem 1rem;">{{$isian['status']}}</span>
-                @endif
+            <td>1790128301218390{{$isian->id}}</td>
+            <td>{{$isian->movie->namaFilm}}</td>
+            <td>{{$isian->seat}}</td>
+            <td>Rp. {{$isian->totBayar}}</td>
+            <td>
+                <span class="badge rounded-pill text-bg-info text-white" style="font-size: 1.2rem; padding: 0.5rem 1rem;">Selesai</span>
             </td>
         </tr>
         @empty
@@ -161,24 +158,22 @@
     </table>
     <div class="pagination mt-3 mb-3">
         <div class="kotak1" style="border:2px solid #06314C; background-color:#CEA945">
-            @if ($isi->onFirstPage())
+            @if ($transaksis->onFirstPage())
             <span class="pagination-prev disabled ml-2"><i class="fa fa-arrow-left"></i></span>
             @else
-            <a href="{{ $isi->previousPageUrl() }}" class="pagination-prev ml-2"><i class="fa fa-arrow-left"></i></a>
+            <a href="{{ $transaksis->previousPageUrl() }}" class="pagination-prev ml-2"><i class="fa fa-arrow-left"></i></a>
             @endif
         </div>
 
         <div class="box2" style="border:2px solid #06314C; background-color:#CEA945">
-            @if ($isi->hasMorePages())
-            <a href="{{ $isi->nextPageUrl() }}" class="pagination-next ml-2"><i class="fa fa-arrow-right"></i></a>
+            @if ($transaksis->hasMorePages())
+            <a href="{{ $transaksis->nextPageUrl() }}" class="pagination-next ml-2"><i class="fa fa-arrow-right"></i></a>
             @else
             <span class="pagination-next disabled ml-2"><i class="fa fa-arrow-right"></i></span>
             @endif
         </div>
-
-
         <div class="pagination-info ml-6">
-            Page {{ $isi->currentPage() }} of {{ $isi->lastPage() }}
+            Page {{ $transaksis->currentPage() }} of {{ $transaksis->lastPage() }}
         </div>
     </div>
 </div>

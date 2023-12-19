@@ -78,16 +78,16 @@
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('Costumer.index') }}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('Costumer.index') }}"><iconify-icon icon="material-symbols:home"></iconify-icon>Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('loginAdmin') }}">Admin Page</a>
+                    <a class="nav-link" href="{{ route('CostumerProfile.index') }}"><iconify-icon icon="pajamas:profile"></iconify-icon>Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('CostumerProfile.index') }}">Profile</a>
+                    <a class="nav-link" href="{{ route('Costumer.show', auth()->id()) }}"><iconify-icon icon="mdi:ticket"></iconify-icon>My Ticket</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}">LogOut</a>
+                    <a class="nav-link" href="{{ route('logout') }}"><iconify-icon icon="material-symbols:logout"></iconify-icon>Logout</a>
                 </li>
             </ul>
         </div>
@@ -113,7 +113,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <script src="{{ asset('js/seatBioskop.js') }}"></script>
     <script src="{{ asset('js/transaksi1.js') }}"></script>
 </body>

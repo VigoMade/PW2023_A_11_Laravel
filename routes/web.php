@@ -6,6 +6,7 @@ use App\Http\Controllers\registerAdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\IndexAdminController;
 use App\Http\Controllers\managemenUserController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\tampilFilmController;
@@ -38,60 +39,6 @@ Route::resource('/Costumer', tampilFilmController::class);
 
 //profile
 Route::resource('/CostumerProfile', ProfileController::class);
-
-Route::get('/admin', function () {
-    $isi = [
-        [
-            'no' => '1',
-            'noInvoice' => '1231',
-            'pemesanan' => 'Ticket',
-            'subTotal' => '50000',
-            'status' => 'Selesai'
-        ],
-        [
-            'no' => '2',
-            'noInvoice' => '1232',
-            'pemesanan' => 'Ticket',
-            'subTotal' => '100000',
-            'status' => 'Proses'
-        ],
-        [
-            'no' => '3',
-            'noInvoice' => '1233',
-            'pemesanan' => 'Ticket',
-            'subTotal' => '150000',
-            'status' => 'Proses'
-        ],
-        [
-            'no' => '4',
-            'noInvoice' => '1231',
-            'pemesanan' => 'Ticket',
-            'subTotal' => '20000',
-            'status' => 'Selesai'
-        ],
-        [
-            'no' => '5',
-            'noInvoice' => '1231',
-            'pemesanan' => 'Ticket',
-            'subTotal' => '50000',
-            'status' => 'Proses'
-        ]
-    ];
-
-    $perPage = 3;
-    $currentPage = request()->get('page', 1);
-
-    $chunkedData = array_chunk($isi, $perPage);
-    $paginator = new LengthAwarePaginator(
-        $chunkedData[$currentPage - 1],
-        count($isi),
-        $perPage,
-        $currentPage,
-        ['path' => route('admin')]
-    );
-
-    return view('Admin/indexPageAdmin', ['isi' => $paginator]);
-})->name('admin');
 
 //loginAdmin
 Route::get('/loginAdmin', [LoginAdminController::class, 'login'])->name('loginAdmin');
@@ -133,6 +80,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //movie
 Route::resource('/Admin', MovieController::class);
+Route::resource('/AdminIndex', IndexAdminController::class);
 Route::get('/transaksi1/{movie}', [MovieController::class, 'show_transaksi'])->name('show_transaksi');
 
 
@@ -144,5 +92,3 @@ Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('t
 // Route untuk menyimpan transaksi baru
 Route::post('/transaksi/store/{movie}', [TransaksiController::class, 'store'])->name('transaksi.store');
 Route::get('/transaksi2/store/{movie}', [TransaksiController::class, 'show_transaksi2'])->name('show_transaksi2');
-
-

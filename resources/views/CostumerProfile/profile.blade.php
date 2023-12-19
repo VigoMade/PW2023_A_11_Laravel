@@ -107,20 +107,6 @@
                     </div>
                     <div class="row ">
                         <div class="col-3 ms-3">
-                            <p>Password</p>
-                        </div>
-                        <div class="col-2">
-                            <p>:</p>
-                        </div>
-                        <div class="col-5">
-                            <p>*******</p>
-                        </div>
-                        <div class="col-1">
-                            <img src="{{ url('img/icons8-pencil-50.png') }}" class="pencil" alt="">
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col-3 ms-3">
                             <p>No Hp</p>
                         </div>
                         <div class="col-2">
