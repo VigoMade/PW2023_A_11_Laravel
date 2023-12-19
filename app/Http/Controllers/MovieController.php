@@ -20,9 +20,10 @@ class MovieController extends Controller
         return view('Admin.createMovie');
     }
 
-    public function show_transaksi($movieId){
+    public function show_transaksi($movieId)
+    {
         $movie = Movie::find($movieId);
-        
+
         return view('transaksi1', compact('movie'));
     }
 
@@ -99,7 +100,6 @@ class MovieController extends Controller
         $this->validate($request, [
             'namaFilm' => 'required',
             'genre' => 'required',
-
             'jamTayang' => 'required',
             'jamAkhir' => 'required',
             'tanggalTayang' => 'required',

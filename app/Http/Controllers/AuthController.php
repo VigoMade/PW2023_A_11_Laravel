@@ -17,23 +17,23 @@ class AuthController extends Controller
         return view('login');
     }
 
-   public function login(Request $request)
-{   
-    $movies = Movie::all();
-    // validate data 
-    $credentials = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required'
-    ]);
+    public function login(Request $request)
+    {
+        $movies = Movie::all();
+        // validate data 
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-    if (Auth::attempt($credentials)) {
-        $user = Auth::user(); 
-       
-        return view('Costumer.dashboard', compact('user','movies'));
-    } else {
-        return back()->withErrors(['email' => 'Invalid credentials']);
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            return view('Costumer.landingPage', compact('user', 'movies'));
+        } else {
+            return back()->withErrors(['email' => 'Invalid credentials']);
+        }
     }
-}
 
     public function register_view()
     {
@@ -66,13 +66,11 @@ class AuthController extends Controller
 
         return Redirect::to('login');
     }
-    
+
     public function logout()
     {
         Session::flush();
         Auth::logout();
-        return redirect('');
+        return redirect('login');
     }
-
-
 }

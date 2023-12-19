@@ -45,6 +45,6 @@ class LoginAdminController extends Controller
         //trus balik ke form login
 
         Auth::logout();
-        return redirect('/');
+        return redirect('loginAdmin');
     }
 }

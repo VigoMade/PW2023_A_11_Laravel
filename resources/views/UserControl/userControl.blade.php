@@ -131,7 +131,7 @@
         </tr>
         @forelse($user as $isian)
         <tr>
-            <td> <img src="{{asset('img/avatar2.png')}}" alt="Avatar" class="rounded-circle" style="width: 32px; height: 32px;">{{$isian->username}}</td>
+            <td> <img src="/img/{{$isian->imgProfile}}" alt="Avatar" class="rounded-circle" style="width: 32px; height: 32px;">{{$isian->username}}</td>
             <td>{{$isian->nama}}</td>
             <td>{{$isian->email}}</td>
             <td class="edit-delete-column">
