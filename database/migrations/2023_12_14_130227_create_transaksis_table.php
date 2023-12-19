@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user')->constrained('users')->onDelete('cascade') ;
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->foreignId('id_movie')->constrained('movies')->onDelete('cascade');
             $table->string('seat');
             $table->integer('totBayar');
