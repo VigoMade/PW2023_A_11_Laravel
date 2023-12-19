@@ -36,6 +36,8 @@ Route::get('/login', function () {
 
 Route::resource('/Costumer', tampilFilmController::class);
 
+//profile
+Route::resource('/CostumerProfile', ProfileController::class);
 
 Route::get('/admin', function () {
     $isi = [
@@ -100,6 +102,8 @@ Route::get('/registerAdmin', [registerAdminController::class, 'register'])->name
 Route::post('/register/action', [registerAdminController::class, 'actionRegister'])->name('actionRegister');
 Route::get('/register/verify/{verify_key}', [registerAdminController::class, 'verify'])->name('verify');
 
+//logoutAdmin
+Route::get('/logoutAdmin', [LoginAdminController::class, 'actionLogout'])->name('logoutAdmin');
 
 //userControl
 Route::resource('/UserControl', managemenUserController::class);
@@ -122,14 +126,10 @@ Route::post('register', [AuthController::class, 'register'])->name('register')->
 
 
 Route::get('home', [AuthController::class, 'home'])->name('home');
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::get('/profile', function () {
-    return view('Costumer/profile');
-});
 
-Route::get('/profile', [ProfileController::class, 'profile_view'])->name('profile_view');
 
 //movie
 Route::resource('/Admin', MovieController::class);

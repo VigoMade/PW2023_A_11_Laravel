@@ -20,6 +20,7 @@ class MovieController extends Controller
         return view('Admin.createMovie');
     }
 
+
    public function show_transaksi($movieId){
     $movieFind = Movie::find($movieId);
     // $movies_with_same_title = Movie::where('namaFilm', $movieFind->namaFilm)
@@ -28,6 +29,15 @@ class MovieController extends Controller
     $movies = Movie::all();
     return view('transaksi1', compact('movieFind', 'movies'));
 }
+
+    public function show_transaksi($movieId)
+    {
+        $movie = Movie::find($movieId);
+
+        return view('transaksi1', compact('movie'));
+    }
+
+
     /**
      * store
      *
@@ -101,7 +111,6 @@ class MovieController extends Controller
         $this->validate($request, [
             'namaFilm' => 'required',
             'genre' => 'required',
-
             'jamTayang' => 'required',
             'jamAkhir' => 'required',
             'tanggalTayang' => 'required',

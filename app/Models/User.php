@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'noTelp',
+        'imgProfile'
     ];
 
     public function transaksis()
