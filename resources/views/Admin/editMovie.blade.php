@@ -153,7 +153,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label class="font-weight-bold">Sinopsis</label>
-                                <textarea class="form-control @error('sinopsis') is-invalid @enderror" name="sinopsis" rows="5">{{ old('sinopsis',$movie->harga) }}</textarea>
+                                <textarea class="form-control @error('sinopsis') is-invalid @enderror" name="sinopsis" rows="5">{{ old('sinopsis',$movie->sinopsis) }}</textarea>
                                 @error('sinopsis')
                                 <div class="invalid-feedback">
                                     {{ $message }}
