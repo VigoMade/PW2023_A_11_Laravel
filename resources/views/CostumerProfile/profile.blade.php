@@ -134,7 +134,10 @@
                         </div>
                         <div class="row">
                             <div class="col text-end">
-                                <a href="{{ route('CostumerProfile.edit', $user->id) }}" class="btn-edit mb-2 mt-3">Edit</a>
+                                <button class="btn-edit mb-2 mt-3">
+                                    <a style="text-decoration: none; color: white"
+                                        href="{{ route('CostumerProfile.edit', $user->id) }}">Edit</a>
+                                </button>
                             </div>
                         </div>
                     </div>
