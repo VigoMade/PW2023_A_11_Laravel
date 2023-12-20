@@ -186,8 +186,8 @@
 
                                                         @foreach ($movies as $movie)
                                                             @if ($movie->namaFilm === $movieFind->namaFilm)
-                                                                <div class="btn btn-jamJadwal"
-                                                                    movieid="{{ $movie->id }}">
+                                                                <div class="btn btn-jamJadwal" movieid="{{ $movie->id }}"
+                                                                    data-date="{{ date('d M', strtotime($movie->tanggalTayang)) }}">
                                                                     {{ date('H:i', strtotime($movie->jamTayang)) }}
                                                                     <p>{{ $movie->id }}</p>
                                                                 </div>
@@ -316,10 +316,58 @@
             <a class="text-white" href="https://github.com/VigoMade/UTSWeb_A_11.git">UTS Web A Kelompok 11</a>
         </div>
     </footer>
-
-
-
     <script src="{{ asset('js/transaksi1.js') }}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var jadwalButtons = document.querySelectorAll('.jadwal');
+            var jamJadwalButtons = document.querySelectorAll('.btn-jamJadwal');
+            var movieId = null;
+
+            jadwalButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Remove focus from all jadwal buttons
+                    jadwalButtons.forEach(function(btn) {
+                        btn.classList.remove('focused');
+                    });
+
+                    // Add focus to the clicked jadwal button
+                    button.classList.add('focused');
+
+                    // Get the selected date from the clicked jadwal button
+                    var selectedDate = button.querySelector('.jadwalDetail p').innerText;
+
+                    // Filter and show/hide jamJadwal buttons based on the selected date
+                    jamJadwalButtons.forEach(function(jamButton) {
+                        var jamButtonDate = jamButton.getAttribute('data-date');
+                        jamButton.style.display = jamButtonDate === selectedDate ?
+                            'inline-block' : 'none';
+                    });
+                });
+            });
+
+            jamJadwalButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Remove focus from all jamJadwal buttons
+                    jamJadwalButtons.forEach(function(btn) {
+                        btn.classList.remove('focused');
+                    });
+
+                    // Add focus to the clicked jamJadwal button
+                    button.classList.add('focused');
+                    movieId = button.getAttribute('movieid');
+                });
+            });
+
+            var beliTiketButton = document.querySelector('.paddingForStickt a.btn-custom');
+            beliTiketButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                var url = "{{ route('seatBioskop_view', ['movie' => ':movieId']) }}";
+                url = url.replace(':movieId', movieId);
+                window.location.href = url;
+            });
+        });
+    </script>
 
 
 
