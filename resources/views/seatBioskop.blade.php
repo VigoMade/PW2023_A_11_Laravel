@@ -15,9 +15,9 @@
             background-color: #03213B;
             color: #fff;
             /* display: flex;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        flex-direction: column;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        align-items: center;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        justify-content: center; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        flex-direction: column;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        justify-content: center; */
             height: auto;
         }
 
@@ -121,7 +121,7 @@
         }
 
         .screen {
-            background-image: url('imgSeatBioskop/bgScreen5.jpg');
+            background-image: url('/imgSeatBioskop/bgScreen5.jpg');
             /* Gantilah 'url_gambar_anda.jpg' dengan URL gambar yang ingin Anda gunakan */
             background-size: cover;
             /* Untuk memastikan gambar mencakup seluruh elemen */
@@ -273,11 +273,11 @@
 
                 <div class="pembungkusSeat">
                     <div class="screen" style="margin-bottom: 40px;">
-                        {{-- <img src="imgSeatBioskop/screen.png" alt="" width="450px;"> --}}
+                        {{-- <img src="/imgSeatBioskop/bgScreen5.jpg" alt="" width="450px;" height="300px"> --}}
                     </div>
 
-                    <div class="containerSeat">
-                        <div class="row">
+                    <div class="containerSeat ">
+                        <div class="row ml-2">
                             <div class="seat">
                                 A1
                             </div>
@@ -294,7 +294,7 @@
                             <div class="seat">A12</div>
                         </div>
 
-                        <div class="row">
+                        <div class="row ml-2">
                             <div class="seat">B1</div>
                             <div class="seat">B2</div>
                             <div class="seat">B3</div>
@@ -308,7 +308,7 @@
                             <div class="seat">B11</div>
                             <div class="seat">B12</div>
                         </div>
-                        <div class="row">
+                        <div class="row ml-2">
                             <div class="seat">C1</div>
                             <div class="seat">C2</div>
                             <div class="seat">C3</div>
@@ -322,7 +322,7 @@
                             <div class="seat sold">C11</div>
                             <div class="seat sold">C12</div>
                         </div>
-                        <div class="row">
+                        <div class="row ml-2">
                             <div class="seat">D1</div>
                             <div class="seat">D2</div>
                             <div class="seat">D3</div>
@@ -337,7 +337,7 @@
                             <div class="seat">D12</div>
 
                         </div>
-                        <div class="row">
+                        <div class="row ml-2">
                             <div class="seat">E1</div>
                             <div class="seat">E2</div>
                             <div class="seat">E3</div>
@@ -351,7 +351,7 @@
                             <div class="seat">E11</div>
                             <div class="seat">E12</div>
                         </div>
-                        <div class="row">
+                        <div class="row ml-2">
                             <div class="seat">F1</div>
                             <div class="seat">F2</div>
                             <div class="seat">F3</div>
