@@ -15,7 +15,7 @@ class registerAdminController extends Controller
 {
     public function register()
     {
-        return view('admin/registerAdmin');
+        return view('Admin/registerAdmin');
     }
 
     public function actionRegister(Request $request)
