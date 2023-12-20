@@ -26,7 +26,7 @@ use App\Http\Controllers\TransaksiController;
 Route::get('/homePage', function () {
     return view('homePage');
 });
-
+ 
 Route::get('/', function () {
     return view('homePage');
 });
@@ -64,25 +64,19 @@ Route::get('/transaksi2', function () {
 });
 
 //login
-
 Route::get('login', [AuthController::class, 'index'])->name('login_view');
 Route::post('login', [AuthController::class, 'login'])->name('login')->middleware('throttle:2,1');
 
 Route::get('register', [AuthController::class, 'register_view'])->name('register_view');
 Route::post('register', [AuthController::class, 'register'])->name('register')->middleware('throttle:2,1');
 
-
 Route::get('home', [AuthController::class, 'home'])->name('home');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
-
-
 
 //movie
 Route::resource('/Admin', MovieController::class);
 Route::resource('/AdminIndex', IndexAdminController::class);
 Route::get('/transaksi1/{movie}', [MovieController::class, 'show_transaksi'])->name('show_transaksi');
-
 
 //transaksi
 Route::get('/seatBioskop/{movie}', [TransaksiController::class, 'seatBioskop_view'])->name('seatBioskop_view');
