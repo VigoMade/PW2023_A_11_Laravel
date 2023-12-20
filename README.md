@@ -1,6 +1,6 @@
 ## UAS Pemrograman Web Gasal 2023/2024
 
-##Kelas A Kelompok 11
+## Kelas A Kelompok 11
 
 
 ## Anggota Kelompok:
@@ -10,11 +10,12 @@
 
 ## emaik & Password login
 - Login User:
-    -> email : vigomadeprasetyo@gmail.com
-    -> password: 123
+- email : vigomadeprasetyo@gmail.com
+- password: 123
+
 - Login Admin:
-    -> email : vigovigo129@gmail.com
-    -> password : 123
+- email : vigovigo129@gmail.com
+- password : 123
 
 
 ### Bonus yang diambil
