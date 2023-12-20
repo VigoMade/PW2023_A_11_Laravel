@@ -41,13 +41,13 @@
         <div class="col-md-6 register-box">
             <h2 class="text-center"><b>Register</b></h2>
             <hr>
-            @if(session('message'))
-            <div class="alert alert-success">
-                {{session('message')}}
-            </div>
+            @if (session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
             @endif
 
-            <form action="{{route('actionRegister')}}" method="post">
+            <form action="{{ route('actionRegister') }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label><i class="fa fa-people"></i>nama</label>
@@ -70,7 +70,7 @@
                 </button>
 
                 <p class="text-center">
-                    sudah punya akun? <a href="{{route('loginAdmin')}}">Login sini</a>
+                    sudah punya akun? <a href="{{ route('loginAdmin') }}">Login sini</a>
                 </p>
             </form>
         </div>
