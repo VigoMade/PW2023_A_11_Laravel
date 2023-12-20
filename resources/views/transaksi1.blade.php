@@ -1,3 +1,7 @@
+@php
+    $previousDate = null;
+@endphp
+
 @extends('navbarDashboard')
 @section('content')
     <style>
@@ -144,61 +148,27 @@
                             <div class="col-md-9">
                                 <div class="jadwalBioskop">
 
-                                    <div class="jadwal" onclick="">
-                                        <div class="jadwalDetail">
-                                            <p class="mb-0">14 Okt</p>
-                                            <h5>HARI INI</h5>
-                                        </div>
-                                    </div>
+                                    @foreach ($movies as $movie)
+                                        @if ($movie->namaFilm === $movieFind->namaFilm)
+                                            @php
+                                                $currentDate = date('d M', strtotime($movie->tanggalTayang));
+                                                if ($currentDate !== $previousDate) {
+                                                    $previousDate = $currentDate;
+                                                } else {
+                                                    continue; // Skip to the next iteration if date and month match the previous one
+                                                }
+                                            @endphp
 
-                                    <button class="jadwal">
-                                        <div class="jadwalDetail">
-                                            <p class="mb-0">14 Okt</p>
-                                            <h5>KAMIS</h5>
-                                        </div>
-                                    </button>
-
-                                    <button class="jadwal">
-                                        <div class="jadwalDetail">
-                                            <p class="mb-0">14 Okt</p>
-                                            <h5>JUMAT</h5>
-                                        </div>
-                                    </button>
-
-                                    <button class="jadwal">
-                                        <div class="jadwalDetail">
-                                            <p class="mb-0">14 Okt</p>
-                                            <h5>SABTU</h5>
-                                        </div>
-                                    </button>
-
-                                    <button class="jadwal-disable" disabled>
-                                        <div class="jadwalDetail">
-                                            <p class="mb-0">14 Okt</p>
-                                            <h5>MINGGU</h5>
-                                        </div>
-                                    </button>
-
-                                    <button class="jadwal-disable" disabled>
-                                        <div class="jadwalDetail">
-                                            <p class="mb-0">14 Okt</p>
-                                            <h5>SENIN</h5>
-                                        </div>
-                                    </button>
-
-                                    <button class="jadwal-disable" disabled>
-                                        <div class="jadwalDetail">
-                                            <p class="mb-0">14 Okt</p>
-                                            <h5>SELASA</h5>
-                                        </div>
-                                    </button>
-
-                                    <button class="jadwal-disable" disabled>
-                                        <div class="jadwalDetail">
-                                            <p class="mb-0">14 Okt</p>
-                                            <h5>RABU</h5>
-                                        </div>
-                                    </button>
+                                            <button class="jadwal" onclick="">
+                                                <div class="jadwalDetail">
+                                                    <p class="mb-0">
+                                                        {{ $currentDate }}
+                                                    </p>
+                                                    <h5>{{ date('l', strtotime($movie->tanggalTayang)) }}</h5>
+                                                </div>
+                                            </button>
+                                        @endif
+                                    @endforeach
                                 </div>
 
                                 <div class="jamJadwal">
@@ -216,8 +186,8 @@
 
                                                         @foreach ($movies as $movie)
                                                             @if ($movie->namaFilm === $movieFind->namaFilm)
-                                                                <div class="btn btn-jamJadwal"
-                                                                    movieid="{{ $movie->id }}">
+                                                                <div class="btn btn-jamJadwal" movieid="{{ $movie->id }}"
+                                                                    data-date="{{ date('d M', strtotime($movie->tanggalTayang)) }}">
                                                                     {{ date('H:i', strtotime($movie->jamTayang)) }}
                                                                     <p>{{ $movie->id }}</p>
                                                                 </div>
@@ -339,6 +309,7 @@
             </a>
         </div>
     </body>
+
     <footer class="bg-light text-center text-lg-start sticky-bottom">
         <div class="text-center p-3" style="background-color: #03213B; color:white; font-family:Marcellus SC;">
             Kelompok 11 © 2023 Copyright:
@@ -346,6 +317,57 @@
         </div>
     </footer>
     <script src="{{ asset('js/transaksi1.js') }}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var jadwalButtons = document.querySelectorAll('.jadwal');
+            var jamJadwalButtons = document.querySelectorAll('.btn-jamJadwal');
+            var movieId = null;
+
+            jadwalButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Remove focus from all jadwal buttons
+                    jadwalButtons.forEach(function(btn) {
+                        btn.classList.remove('focused');
+                    });
+
+                    // Add focus to the clicked jadwal button
+                    button.classList.add('focused');
+
+                    // Get the selected date from the clicked jadwal button
+                    var selectedDate = button.querySelector('.jadwalDetail p').innerText;
+
+                    // Filter and show/hide jamJadwal buttons based on the selected date
+                    jamJadwalButtons.forEach(function(jamButton) {
+                        var jamButtonDate = jamButton.getAttribute('data-date');
+                        jamButton.style.display = jamButtonDate === selectedDate ?
+                            'inline-block' : 'none';
+                    });
+                });
+            });
+
+            jamJadwalButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Remove focus from all jamJadwal buttons
+                    jamJadwalButtons.forEach(function(btn) {
+                        btn.classList.remove('focused');
+                    });
+
+                    // Add focus to the clicked jamJadwal button
+                    button.classList.add('focused');
+                    movieId = button.getAttribute('movieid');
+                });
+            });
+
+            var beliTiketButton = document.querySelector('.paddingForStickt a.btn-custom');
+            beliTiketButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                var url = "{{ route('seatBioskop_view', ['movie' => ':movieId']) }}";
+                url = url.replace(':movieId', movieId);
+                window.location.href = url;
+            });
+        });
+    </script>
 
 
 
@@ -355,12 +377,10 @@
 
             jadwalButtons.forEach(function(button) {
                 button.addEventListener('click', function() {
-                    // Hapus kelas 'focused' dari semua tombol jadwal
                     jadwalButtons.forEach(function(btn) {
                         btn.classList.remove('focused');
                     });
 
-                    // Tambahkan kelas 'focused' ke tombol yang diklik
                     button.classList.add('focused');
                 });
             });
@@ -369,17 +389,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Ambil semua button jamJadwal
             var jamJadwalButtons = document.querySelectorAll('.btn-jamJadwal');
 
             jamJadwalButtons.forEach(function(button) {
                 button.addEventListener('click', function() {
-                    // Hapus kelas 'focused' dari semua tombol btn-jamJadwal
                     jamJadwalButtons.forEach(function(btn) {
                         btn.classList.remove('focused');
                     });
-
-                    // Tambahkan kelas 'focused' ke tombol yang diklik
                     button.classList.add('focused');
                 });
             });
@@ -390,33 +406,23 @@
         document.addEventListener('DOMContentLoaded', function() {
             var movieId = null;
 
-            // Tangkap klik pada setiap tombol jamJadwal
             var jamJadwalButtons = document.querySelectorAll('.btn-jamJadwal');
             jamJadwalButtons.forEach(function(button) {
                 button.addEventListener('click', function() {
-                    // Hapus kelas 'focused' dari semua tombol btn-jamJadwal
+
                     jamJadwalButtons.forEach(function(btn) {
                         btn.classList.remove('focused');
                     });
-
-                    // Tambahkan kelas 'focused' ke tombol yang diklik
                     button.classList.add('focused');
-
-                    // Ambil movieId dari atribut 'movieid' pada tombol yang diklik
                     movieId = button.getAttribute('movieid');
                 });
             });
 
-            // Tangkap klik pada tombol "Beli Tiket" dan buat URL dengan movieId yang telah diambil
             var beliTiketButton = document.querySelector('.paddingForStickt a.btn-custom');
             beliTiketButton.addEventListener('click', function(event) {
-                event.preventDefault(); // Mencegah tindakan default dari link
-
-                // Buat URL dengan movieId yang telah diambil
+                event.preventDefault();
                 var url = "{{ route('seatBioskop_view', ['movie' => ':movieId']) }}";
                 url = url.replace(':movieId', movieId);
-
-                // Redirect ke URL yang telah dibuat
                 window.location.href = url;
             });
         });

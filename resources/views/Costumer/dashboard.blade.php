@@ -3,6 +3,7 @@
 @section('content')
     <?php
     $images = ['img/banner1.jpg', 'img/banner2.jpg', 'img/banner3.jpg'];
+    $displayedMovies = [];
     ?>
     <style>
         body {
@@ -75,21 +76,28 @@
                                         <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
                                             <div class="row">
                                                 @foreach ($chunk as $movie)
-                                                    <div class="col-md-4 mb-3">
-                                                        <div class="card" style="width: 71%; height: 93%;">
-                                                            <a
-                                                                href="{{ route('show_transaksi', ['movie' => $movie->id]) }}">
-                                                                <img class="img-fluid" alt="{{ $movie->nama }}"
-                                                                    src="/img/{{ $movie->imageMovie }}" />
-                                                            </a>
-                                                            <div class="card-body">
-                                                                <h4 class="card-title">{{ $movie->namaFilm }}</h4>
-                                                                <p class="card-text">
-                                                                    {{ $movie->sinopsis }}
-                                                                </p>
+                                                    @if (!in_array($movie->namaFilm, $displayedMovies))
+                                                        <div class="col-md-4 mb-3">
+                                                            <div class="card" style="width: 71%; height: 93%;">
+                                                                <a
+                                                                    href="{{ route('show_transaksi', ['movie' => $movie->id]) }}">
+                                                                    <img class="img-fluid" alt="{{ $movie->nama }}"
+                                                                        src="/img/{{ $movie->imageMovie }}" />
+                                                                </a>
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">{{ $movie->namaFilm }}</h4>
+                                                                    <p class="card-text">
+                                                                        {{ $movie->sinopsis }}
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+
+                                                        {{-- Tambahkan nama film ke array displayedMovies --}}
+                                                        @php
+                                                            $displayedMovies[] = $movie->namaFilm;
+                                                        @endphp
+                                                    @endif
                                                 @endforeach
                                             </div>
                                         </div>
