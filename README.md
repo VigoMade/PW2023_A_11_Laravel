@@ -5,8 +5,8 @@
 
 ## Anggota Kelompok:
 - Hagai Suranta Perangin-angin / 200711002 - frontend(uts)
-- Marshel Rinaldy/ 210711222 - frontend & backend(login user,register user, semua transaksi)
-- Vigo Made Prastyo / 210711303 - frontend & &backend(login admin,register admin,semua management admin)
+- Marshel Rinaldy/ 210711222 - frontend & backend(login user,register user, semua transaksi,profile)
+- Vigo Made Prastyo / 210711303 - frontend & &backend(login admin,register admin,semua management admin,update profile)
 
 ## emaik & Password login
 - Login User:
