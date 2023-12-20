@@ -33,7 +33,6 @@
             text-align: center;
             font-family: Marcellus SC;
             border-radius: 20px;
-
         }
     </style>
 
