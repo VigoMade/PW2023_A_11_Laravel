@@ -279,9 +279,7 @@
                                     <hr>
                                     <div class="detailTransaksi">
                                         <h5 class="mb-4">Detail Transaksi</h5>
-                                        <p>id transaksi : {{ $transaksi->id }}</p>
-                                        <p>id user : {{ $user->id }}</p>
-                                        <p>id movie : {{ $movieFind->id }}</p>
+
                                         <div class="sejajarkan">
                                             <p>TIKET</p>
                                             <p>{{ $transaksi->totalSeat }}x</p>

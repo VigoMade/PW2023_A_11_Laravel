@@ -189,7 +189,7 @@
                                                                 <div class="btn btn-jamJadwal" movieid="{{ $movie->id }}"
                                                                     data-date="{{ date('d M', strtotime($movie->tanggalTayang)) }}">
                                                                     {{ date('H:i', strtotime($movie->jamTayang)) }}
-                                                                    <p>{{ $movie->id }}</p>
+
                                                                 </div>
                                                             @endif
                                                         @endforeach
