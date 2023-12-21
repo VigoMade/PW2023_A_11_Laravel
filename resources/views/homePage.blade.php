@@ -23,15 +23,8 @@
             <source src="/video/vidio2.mp4" type="video/mp4">
             <source src="/audio/audiointro.mp3" type="audio/mp3">
         </video>
-
         <nav>
             <img src="img/cinema.png" class="logo" width="80px">
-            <ul>
-                <li><a href=""></a>HOME</li>
-                <li><a href=""></a>FILM</li>
-                <li><a href=""></a>ABOUT</li>
-                <li><a href=""></a>HOME</li>
-            </ul>
         </nav>
         <div class="content">
             <h1>CINEMA ATMA</h1>
